@@ -1,0 +1,633 @@
+:root {
+    --color-bg:         #f2ede6;
+    --color-surface:    #faf8f5;
+    --color-border:     #cfc5b8;
+    --color-text:       #2a2520;
+    --color-muted:      #7a7269;
+    --color-accent:     #3a3028;
+    --color-rule:       #b0a090;
+    --color-success-bg: #eef5ec;
+    --color-success-bd: #6a9b62;
+    --color-error-bg:   #fdf0ef;
+    --color-error-bd:   #c0655a;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0 20px 60px;
+}
+
+/* ── Header – Traueranzeige ───────────────────────────── */
+
+.site-header {
+    max-width: 760px;
+    margin: 0 auto 0;
+    padding: 48px 40px 36px;
+    border: 1px solid var(--color-rule);
+    border-top: 5px solid var(--color-accent);
+    background: var(--color-surface);
+    margin-top: 40px;
+    position: relative;
+}
+
+/* Thin double-rule above the header block */
+.site-header::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    right: 12px;
+    border-top: 1px solid var(--color-rule);
+}
+
+.header-inner {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+}
+
+.header-text {
+    flex: 1;
+}
+
+.in-erinnerung {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-muted);
+    margin: 0 0 14px;
+}
+
+.site-header .name {
+    font-size: 2.4rem;
+    font-weight: normal;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    margin: 0 0 12px;
+    line-height: 1.2;
+}
+
+.site-header .dates {
+    font-size: 1rem;
+    color: var(--color-muted);
+    margin: 0 0 14px;
+    letter-spacing: 0.03em;
+}
+
+.site-header .dates .date-symbol {
+    font-size: 1.1em;
+}
+
+.site-header .subtitle {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-muted);
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+/* Photo beside the name */
+.header-photo {
+    flex: 0 0 auto;
+    width: 220px;
+    text-align: right;
+}
+
+.header-photo img {
+    max-width: 220px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    filter: grayscale(100%);
+}
+
+/* Verse below the name/photo block */
+.header-verse {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.header-verse p {
+    font-style: italic;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Main content ─────────────────────────────────────── */
+
+main {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-top: none;
+    padding: 40px 40px 48px;
+}
+
+section {
+    margin-top: 40px;
+}
+
+section:first-child {
+    margin-top: 0;
+}
+
+section h2 {
+    font-size: 0.75rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-muted);
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Entries ──────────────────────────────────────────── */
+
+.entry {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.entry:last-child {
+    border-bottom: none;
+}
+
+.entry-meta {
+    margin-bottom: 10px;
+}
+
+.entry-name {
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+.entry-date {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-left: 12px;
+}
+
+.entry-message {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.no-entries {
+    text-align: center;
+    color: var(--color-muted);
+    font-style: italic;
+    padding: 28px 0;
+}
+
+/* ── Image gallery ────────────────────────────────────── */
+
+.entry-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 6px;
+    margin-top: 14px;
+}
+
+.entry-gallery a {
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.entry-gallery a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s;
+    filter: grayscale(10%);
+}
+
+.entry-gallery a:hover img {
+    opacity: 0.85;
+}
+
+/* ── Banners ──────────────────────────────────────────── */
+
+.banner {
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.banner-success {
+    background: var(--color-success-bg);
+    border-left: 3px solid var(--color-success-bd);
+}
+
+.banner-error {
+    background: var(--color-error-bg);
+    border-left: 3px solid var(--color-error-bd);
+}
+
+.banner-error ul {
+    margin: 6px 0 0;
+    padding-left: 20px;
+}
+
+/* ── Form ─────────────────────────────────────────────── */
+
+.form-section {
+    padding-top: 36px;
+    border-top: 1px solid var(--color-rule);
+}
+
+.form-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+.form-field label .optional {
+    text-transform: none;
+    font-style: italic;
+    letter-spacing: 0;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="number"],
+.form-field textarea {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 0;
+    padding: 9px 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-text);
+    background: #fdfcfa;
+    transition: border-color 0.15s;
+    appearance: none;
+}
+
+.form-field input[type="text"]:focus,
+.form-field input[type="email"]:focus,
+.form-field input[type="number"]:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-field textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.form-field input[type="file"] {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    cursor: pointer;
+}
+
+.form-field .field-hint {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    margin-top: 4px;
+    font-style: italic;
+}
+
+.captcha-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.captcha-row label {
+    margin-bottom: 0;
+    text-transform: none;
+    letter-spacing: 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--color-muted);
+}
+
+.captcha-row input {
+    width: 80px !important;
+}
+
+.form-submit {
+    margin-top: 4px;
+}
+
+.btn-submit {
+    background: var(--color-accent);
+    color: #f5f0ea;
+    border: none;
+    padding: 11px 30px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-submit:hover {
+    background: #5a4f44;
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+
+footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 18px 40px;
+    border: 1px solid var(--color-border);
+    border-top: none;
+    text-align: center;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    background: var(--color-bg);
+    border-bottom: 3px solid var(--color-accent);
+}
+
+/* ── Checkbox ─────────────────────────────────────────── */
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
+
+/* ── Upload zone ──────────────────────────────────────── */
+
+.upload-zone {
+    border: 2px dashed var(--color-border);
+    padding: 28px 20px;
+    text-align: center;
+    background: #fdfcfa;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.upload-zone.dragover {
+    border-color: var(--color-accent);
+    background: #f5f0e8;
+}
+
+.upload-hint {
+    color: var(--color-muted);
+    font-style: italic;
+    font-size: 0.9rem;
+    margin: 0 0 10px;
+}
+
+.upload-hint-small {
+    font-size: 0.78rem;
+    margin: 8px 0 0;
+}
+
+.upload-btn {
+    background: none;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 7px 20px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    border-radius: 0;
+    transition: background 0.15s, color 0.15s;
+}
+
+.upload-btn:hover {
+    background: var(--color-accent);
+    color: #fff;
+}
+
+/* ── Upload previews ──────────────────────────────────── */
+
+.upload-previews {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.preview-thumb {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: #f0ece6;
+}
+
+.preview-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.preview-remove {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 22px;
+    height: 22px;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.preview-remove:hover {
+    background: rgba(160, 48, 48, 0.9);
+}
+
+.preview-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 3px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: system-ui, sans-serif;
+}
+
+/* ── Upload progress ──────────────────────────────────── */
+
+.upload-progress {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.upload-progress[hidden] {
+    display: none;
+}
+
+.upload-progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--color-border);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.upload-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--color-accent);
+    border-radius: 3px;
+    transition: width 0.2s ease;
+}
+
+.upload-progress-label {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+    min-width: 36px;
+    text-align: right;
+}
+
+/* ── Button loading state ─────────────────────────────── */
+
+.btn-submit {
+    position: relative;
+}
+
+.btn-submit.loading {
+    color: transparent;
+    pointer-events: none;
+}
+
+.btn-submit.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Footer links ─────────────────────────────────────── */
+
+footer a {
+    color: var(--color-muted);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 560px) {
+    .site-header {
+        padding: 32px 20px 28px;
+        margin-top: 20px;
+    }
+
+    main {
+        padding: 28px 20px 36px;
+    }
+
+    footer {
+        padding: 16px 20px;
+    }
+
+    .header-inner {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .header-text {
+        text-align: center;
+    }
+
+    .header-photo {
+        width: 160px;
+    }
+
+    .header-photo img {
+        margin: 0 auto;
+    }
+
+    .site-header .name {
+        font-size: 1.9rem;
+    }
+
+    .entry-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+}

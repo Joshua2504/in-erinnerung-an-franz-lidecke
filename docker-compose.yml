@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    container_name: franz-site
+    ports:
+      - "8997:80"
+    volumes:
+      - ./public:/var/www/html
+      - ./data:/var/www/data
+      - ./uploads:/var/www/html/uploads
+    env_file:
+      - path: .env.local
+        required: false
+    restart: unless-stopped

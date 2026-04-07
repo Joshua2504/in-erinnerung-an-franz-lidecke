@@ -1,0 +1,7 @@
+data/
+uploads/
+.git/
+.github/
+.gitignore
+README.md
+.DS_Store

@@ -1,0 +1,59 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'public/**'
+      - 'docker-compose.yml'
+      - 'Dockerfile'
+      - 'docker-entrypoint.sh'
+      - 'php.ini'
+      - 'composer.json'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          cp known_hosts ~/.ssh/known_hosts
+
+      - name: Sync files to server
+        run: |
+          rsync -avz --delete \
+            --exclude 'data/' \
+            --exclude 'uploads/' \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '.gitignore' \
+            --exclude '.dockerignore' \
+            --exclude 'README.md' \
+            -e "ssh -i ~/.ssh/id_rsa" \
+            ./ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.SSH_PATH }}/
+
+      - name: Ensure persistent directories exist on server
+        run: |
+          ssh -i ~/.ssh/id_rsa ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} \
+            "mkdir -p ${{ vars.SSH_PATH }}/data ${{ vars.SSH_PATH }}/uploads && \
+             chmod 755 ${{ vars.SSH_PATH }}/data ${{ vars.SSH_PATH }}/uploads"
+
+      - name: Deploy with Docker Compose
+        run: |
+          ssh -i ~/.ssh/id_rsa ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} \
+            "cd ${{ vars.SSH_PATH }} && docker compose down && docker compose up --build -d"
+
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/id_rsa
