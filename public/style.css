@@ -114,6 +114,11 @@ body {
     display: block;
     margin-left: auto;
     filter: grayscale(100%);
+    transition: filter 0.4s ease;
+}
+
+.header-photo:hover img {
+    filter: none;
 }
 
 /* Verse below the name/photo block */
