@@ -578,6 +578,76 @@ footer {
     to { transform: rotate(360deg); }
 }
 
+/* ── Cookie banner ────────────────────────────────────── */
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-accent);
+    color: #f5f0ea;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    z-index: 1000;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.cookie-banner[hidden] {
+    display: none;
+}
+
+.cookie-text {
+    margin: 0;
+    flex: 1;
+}
+
+.cookie-text a {
+    color: #d8c8b0;
+    text-decoration: underline;
+}
+
+.cookie-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.cookie-btn {
+    padding: 7px 20px;
+    border: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    border-radius: 0;
+}
+
+.cookie-btn-accept {
+    background: #f5f0ea;
+    color: var(--color-accent);
+}
+
+.cookie-btn-accept:hover {
+    background: #fff;
+}
+
+.cookie-btn-decline {
+    background: transparent;
+    color: #d8c8b0;
+    border: 1px solid #d8c8b0;
+}
+
+.cookie-btn-decline:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
 /* ── Footer links ─────────────────────────────────────── */
 
 footer a {

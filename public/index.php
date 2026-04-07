@@ -279,14 +279,6 @@ $cap_b = $_SESSION['cap_b'];
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <meta name="robots" content="index, follow">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FD0LXG1P2B"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-FD0LXG1P2B');
-    </script>
 </head>
 <body>
 
@@ -434,8 +426,65 @@ $cap_b = $_SESSION['cap_b'];
     <p>&copy; Joshua Treudler &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
+<div id="cookieBanner" class="cookie-banner" hidden>
+    <p class="cookie-text">
+        Diese Website verwendet Google Analytics, um Seitenaufrufe anonym zu erfassen.
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutz</a>
+    </p>
+    <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Akzeptieren</button>
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Ablehnen</button>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script>GLightbox({ selector: '.glightbox' });</script>
+<script>
+(function () {
+    const COOKIE_NAME = 'ga_consent';
+    const GA_ID = 'G-FD0LXG1P2B';
+    const banner = document.getElementById('cookieBanner');
+
+    function getConsent() {
+        return document.cookie.split('; ').find(r => r.startsWith(COOKIE_NAME + '='))?.split('=')[1];
+    }
+
+    function setConsent(value) {
+        const expires = new Date(Date.now() + 365 * 24 * 3600 * 1000).toUTCString();
+        document.cookie = COOKIE_NAME + '=' + value + '; expires=' + expires + '; path=/; SameSite=Lax';
+    }
+
+    function loadGA() {
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+    }
+
+    const consent = getConsent();
+    if (consent === 'yes') {
+        loadGA();
+    } else if (consent !== 'no') {
+        banner.hidden = false;
+    }
+
+    document.getElementById('cookieAccept').addEventListener('click', function () {
+        setConsent('yes');
+        banner.hidden = true;
+        loadGA();
+    });
+
+    document.getElementById('cookieDecline').addEventListener('click', function () {
+        setConsent('no');
+        banner.hidden = true;
+    });
+})();
+</script>
 <script>
 (function () {
     // ── Upload preview ─────────────────────────────────
