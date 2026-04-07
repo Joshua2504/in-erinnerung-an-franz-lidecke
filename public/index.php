@@ -324,18 +324,35 @@ $cap_b = $_SESSION['cap_b'];
 
     <section class="obituary">
         <p>
-            Franz Lidecke wurde 1937 in Hannover geboren und verbrachte einen Großteil seines
-            Lebens in Bremerhaven. Nach seinem Studium an der Pädagogischen Hochschule Bremen
-            unterrichtete er dort von 1963 bis zu seiner Pensionierung im Jahr 2000 Schülerinnen
-            und Schüler aller Altersgruppen in Deutsch, Englisch, Erdkunde, Geschichte, Sport
-            und Musik.
+            Franz Lidecke wurde 1937 in Hannover geboren. 1942 zog seine Mutter mit ihm und
+            seinen drei Geschwistern nach Wehdel bei Bremerhaven, 1949 folgte die ganze Familie
+            nach Bremerhaven. Dort legte er 1958 sein Abitur ab, wurde anschließend zur Bundeswehr
+            eingezogen und Ende 1959 als Leutnant der Reserve entlassen. Die Zeit bis zum Studium
+            überbrückte er als Aushilfssteward auf dem Passagierschiff „Berlin" — mit Fahrten nach
+            Kanada, in die USA und zu den Westindischen Inseln.
         </p>
         <p>
-            Neben seinem Lehrberuf war Franz ein leidenschaftlicher Turntrainer, Weltreisender
-            und Autor von Lehrbüchern für den Schul- und Vereinssport. 1996 begann er eine
-            Ausbildung zum Märchenerzähler in der Europäischen Märchengesellschaft — seitdem
-            erzählte er Märchen aus aller Welt für Menschen von 4 bis 90 Jahren, veröffentlichte
-            vier Märchen-CDs und begeisterte sein Publikum bis ins hohe Alter.
+            Von 1960 bis 1963 studierte er an der Pädagogischen Hochschule Bremen und trat
+            anschließend seinen Dienst im Bremerhavener Schuldienst an, wo er bis zu seiner
+            Pensionierung im Jahr 2000 Grund-, Haupt- und Realschüler sowie Gymnasiasten in
+            Deutsch, Englisch, Erdkunde, Geschichte, Sport und Musik unterrichtete.
+        </p>
+        <p>
+            Seit 1952 war Franz als Übungsleiter in Turnvereinen tätig und leitete Gruppen
+            im Jungen-, Mädchen- und Erwachsenenturnen. Zwölf Jahre lang führte er während
+            der Schulferien Radwandergruppen des Jugendherbergsverbandes mit Jugendlichen aus
+            ganz Deutschland durch Norddeutschland. 1962 und 1964 half er je acht Wochen als
+            Helfer in einem internationalen Ferienlager in den USA (Camp Timanous, Maine).
+            Auf Grundlage seiner langjährigen Praxis verfasste er 2005 drei Lehrbücher für
+            Sportlehrer in Schule und Verein.
+        </p>
+        <p>
+            Als leidenschaftlicher Weltreisender plante und führte Franz über 60 Studienreisen
+            in viele Länder der Erde durch. 1996 begann er eine Ausbildung zum Märchenerzähler
+            in der Europäischen Märchengesellschaft. Seitdem erzählte er Märchen aus aller Welt
+            für Menschen von 4 bis 90 Jahren — in Deutschland und auf Studienreisen rund um den
+            Globus. 2009 veröffentlichte er vier Märchen-CDs für Kinder ab 5, ab 7 und ab 9
+            Jahren sowie für Erwachsene.
         </p>
         <p>
             Wir vermissen ihn sehr. Auf dieser Seite können Familie, Freunde und alle,
