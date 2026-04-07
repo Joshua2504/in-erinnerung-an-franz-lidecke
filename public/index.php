@@ -52,11 +52,6 @@ if (empty($_COOKIE['visitor_token'])) {
 }
 $visitorToken = $_COOKIE['visitor_token'];
 
-// ── CAPTCHA ────────────────────────────────────────────────────────────────
-if (empty($_SESSION['cap_a']) || empty($_SESSION['cap_b'])) {
-    $_SESSION['cap_a'] = random_int(2, 9);
-    $_SESSION['cap_b'] = random_int(1, 9);
-}
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 function send_mail(string $to, string $subject, string $body): void {
@@ -149,13 +144,6 @@ function fmt_date(string $dt): string {
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // CAPTCHA
-    $expected = $_SESSION['cap_a'] + $_SESSION['cap_b'];
-    $given    = filter_input(INPUT_POST, 'captcha', FILTER_VALIDATE_INT);
-    if ($given === false || $given === null || $given !== $expected) {
-        $errors[] = 'Die Rechenaufgabe wurde falsch beantwortet.';
-    }
-
     // Rate limiting per cookie
     $stmt = $db->prepare('SELECT COUNT(*) FROM entries WHERE cookie_token = ? AND created_at > datetime("now", "-1 hour")');
     $stmt->execute([$visitorToken]);
@@ -235,8 +223,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Flash message via session, then redirect cleanly
         $_SESSION['flash_success'] = true;
-        $_SESSION['cap_a'] = random_int(2, 9);
-        $_SESSION['cap_b'] = random_int(1, 9);
 
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) {
             header('Content-Type: application/json');
@@ -247,10 +233,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: /');
         exit;
     }
-
-    // On error: regenerate CAPTCHA
-    $_SESSION['cap_a'] = random_int(2, 9);
-    $_SESSION['cap_b'] = random_int(1, 9);
 
     if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) {
         header('Content-Type: application/json');
@@ -277,8 +259,6 @@ if ($entries) {
     }
 }
 
-$cap_a = $_SESSION['cap_a'];
-$cap_b = $_SESSION['cap_b'];
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -286,16 +266,17 @@ $cap_b = $_SESSION['cap_b'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>In Erinnerung an Franz Lidecke (1937–2026)</title>
-    <meta name="description" content="Gedenkseite für Franz Lidecke, Märchenerzähler, Lehrer und Buchautor. 14. November 1937 – 3. April 2026. Hinterlassen Sie einen Eintrag im Kondolenzbuch.">
+    <meta name="description" content="Gedenkseite für Franz Lidecke – Märchenerzähler, Lehrer und Buchautor aus Bremerhaven. 14. November 1937 – 3. April 2026. Kondolenzbuch, Videoaufnahmen und Erinnerungen.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://franz-lidecke.de/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="In Erinnerung an Franz Lidecke">
     <meta property="og:url" content="https://franz-lidecke.de/">
     <meta property="og:title" content="In Erinnerung an Franz Lidecke (1937–2026)">
-    <meta property="og:description" content="Gedenkseite für Franz Lidecke, Märchenerzähler, Lehrer und Buchautor. Hinterlassen Sie einen Eintrag im Kondolenzbuch.">
-    <meta property="og:image" content="https://franz-lidecke.de/images/franz-lidecke-ausgeschnitten.png">
+    <meta property="og:description" content="Gedenkseite für Franz Lidecke – Märchenerzähler, Lehrer und Buchautor aus Bremerhaven. Kondolenzbuch, Videoaufnahmen und Erinnerungen.">
+    <meta property="og:image" content="https://franz-lidecke.de/images/franz-lidecke-traueranzeige.jpeg">
     <meta property="og:locale" content="de_DE">
 
     <link rel="stylesheet" href="style.css">
@@ -469,13 +450,6 @@ $cap_b = $_SESSION['cap_b'];
                     <div class="upload-previews" id="uploadPreviews"></div>
                 </div>
 
-                <div class="form-field">
-                    <div class="captcha-row">
-                        <label for="captcha">Wie viel ist <?= (int)$cap_a ?> + <?= (int)$cap_b ?>?</label>
-                        <input type="number" id="captcha" name="captcha" min="0" max="99" required>
-                    </div>
-                </div>
-
                 <div class="form-submit">
                     <button type="submit" class="btn-submit" id="submitBtn">Eintrag hinterlassen</button>
                     <div class="upload-progress" id="uploadProgress" hidden>
@@ -493,7 +467,7 @@ $cap_b = $_SESSION['cap_b'];
 </main>
 
 <footer>
-    <p><a href="/maerchenstunde.php">Märchenstunde</a> &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p><a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 <div id="cookieBanner" class="cookie-banner" hidden>

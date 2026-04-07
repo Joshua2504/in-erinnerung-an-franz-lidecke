@@ -31,9 +31,18 @@ function h(string $s): string {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lideckes Märchenstunde – In Erinnerung an Franz Lidecke</title>
-    <meta name="description" content="Franz Lidecke als Märchenerzähler – Videoaufnahmen seiner Märchenstunden aus aller Welt.">
+    <meta name="description" content="Videoaufnahmen von Franz Lideckes Märchenstunden – Märchen aus aller Welt, erzählt von Franz Lidecke, Märchenerzähler aus Bremerhaven.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://franz-lidecke.de/maerchenstunde.php">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="In Erinnerung an Franz Lidecke">
+    <meta property="og:url" content="https://franz-lidecke.de/maerchenstunde.php">
+    <meta property="og:title" content="Lideckes Märchenstunde – In Erinnerung an Franz Lidecke">
+    <meta property="og:description" content="Videoaufnahmen von Franz Lideckes Märchenstunden – Märchen aus aller Welt, erzählt von Franz Lidecke.">
+    <meta property="og:image" content="https://franz-lidecke.de/images/franz-lidecke-traueranzeige.jpeg">
+    <meta property="og:locale" content="de_DE">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
     <style>
@@ -115,7 +124,7 @@ function h(string $s): string {
 </main>
 
 <footer>
-    <p>&copy; Joshua Treudler &nbsp;&middot;&nbsp; <a href="/maerchenstunde.php">Märchenstunde</a> &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p><a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.js"></script>

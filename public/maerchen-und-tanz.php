@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Märchen &amp; Tanz – In Erinnerung an Franz Lidecke</title>
+    <meta name="description" content="Märchen & Tanz – ein Projekt von Franz Lidecke. Gedenkseite für Franz Lidecke, Märchenerzähler, Lehrer und Buchautor aus Bremerhaven.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://franz-lidecke.de/maerchen-und-tanz.php">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="In Erinnerung an Franz Lidecke">
+    <meta property="og:url" content="https://franz-lidecke.de/maerchen-und-tanz.php">
+    <meta property="og:title" content="Märchen &amp; Tanz – In Erinnerung an Franz Lidecke">
+    <meta property="og:description" content="Märchen & Tanz – ein Projekt von Franz Lidecke, Märchenerzähler aus Bremerhaven.">
+    <meta property="og:image" content="https://franz-lidecke.de/images/franz-lidecke-traueranzeige.jpeg">
+    <meta property="og:locale" content="de_DE">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="body-iframe">
@@ -36,7 +46,7 @@
 </main>
 
 <footer>
-    <p>&copy; Joshua Treudler &nbsp;&middot;&nbsp; <a href="/maerchenstunde.php">Märchenstunde</a> &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p><a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 </body>
