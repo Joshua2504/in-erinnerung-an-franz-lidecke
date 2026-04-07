@@ -322,6 +322,27 @@ $cap_b = $_SESSION['cap_b'];
 
 <main>
 
+    <section class="obituary">
+        <p>
+            Franz Lidecke wurde 1937 in Hannover geboren und verbrachte einen Großteil seines
+            Lebens in Bremerhaven. Nach seinem Studium an der Pädagogischen Hochschule Bremen
+            unterrichtete er dort von 1963 bis zu seiner Pensionierung im Jahr 2000 Schülerinnen
+            und Schüler aller Altersgruppen in Deutsch, Englisch, Erdkunde, Geschichte, Sport
+            und Musik.
+        </p>
+        <p>
+            Neben seinem Lehrberuf war Franz ein leidenschaftlicher Turntrainer, Weltreisender
+            und Autor von Lehrbüchern für den Schul- und Vereinssport. 1996 begann er eine
+            Ausbildung zum Märchenerzähler in der Europäischen Märchengesellschaft — seitdem
+            erzählte er Märchen aus aller Welt für Menschen von 4 bis 90 Jahren, veröffentlichte
+            vier Märchen-CDs und begeisterte sein Publikum bis ins hohe Alter.
+        </p>
+        <p>
+            Wir vermissen ihn sehr. Auf dieser Seite können Familie, Freunde und alle,
+            die Franz Lidecke kannten, Abschiedsworte und Erinnerungen hinterlassen.
+        </p>
+    </section>
+
     <?php if ($flashSuccess): ?>
     <div class="banner banner-success">
         Vielen Dank für Ihren Eintrag. Er wird nach Prüfung freigeschaltet.

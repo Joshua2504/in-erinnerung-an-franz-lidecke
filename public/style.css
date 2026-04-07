@@ -151,6 +151,23 @@ section:first-child {
     margin-top: 0;
 }
 
+.obituary {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 32px;
+    margin-bottom: 0;
+}
+
+.obituary p {
+    color: var(--color-muted);
+    font-style: italic;
+    margin: 0 0 12px;
+    line-height: 1.8;
+}
+
+.obituary p:last-child {
+    margin-bottom: 0;
+}
+
 section h2 {
     font-size: 0.75rem;
     font-weight: normal;
