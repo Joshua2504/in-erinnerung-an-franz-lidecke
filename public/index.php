@@ -26,8 +26,18 @@ $db->exec('CREATE TABLE IF NOT EXISTS entry_images (
     FOREIGN KEY (entry_id) REFERENCES entries(id) ON DELETE CASCADE
 )');
 
+$db->exec('CREATE TABLE IF NOT EXISTS page_views (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    visited_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)');
+
 // Migration for existing databases
 try { $db->exec('ALTER TABLE entries ADD COLUMN anonymous INTEGER DEFAULT 0'); } catch (PDOException $e) {}
+
+// ── Track page view ────────────────────────────────────────────────────────
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $db->exec('INSERT INTO page_views DEFAULT VALUES');
+}
 
 // ── Visitor cookie ─────────────────────────────────────────────────────────
 if (empty($_COOKIE['visitor_token'])) {

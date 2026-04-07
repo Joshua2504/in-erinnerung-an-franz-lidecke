@@ -63,6 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
+// ── Page view stats ────────────────────────────────────────────────────────
+$statsTotal  = (int) $db->query('SELECT COUNT(*) FROM page_views')->fetchColumn();
+$stats7days  = (int) $db->query('SELECT COUNT(*) FROM page_views WHERE visited_at > datetime("now", "-7 days")')->fetchColumn();
+$statsToday  = (int) $db->query('SELECT COUNT(*) FROM page_views WHERE DATE(visited_at) = DATE("now")')->fetchColumn();
+
 // ── Load entries ───────────────────────────────────────────────────────────
 $pending  = $db->query('SELECT * FROM entries WHERE approved = 0 ORDER BY created_at DESC')->fetchAll(PDO::FETCH_ASSOC);
 $approved = $db->query('SELECT * FROM entries WHERE approved = 1 ORDER BY created_at DESC')->fetchAll(PDO::FETCH_ASSOC);
@@ -151,6 +156,12 @@ $flashMsg = $_GET['msg'] ?? '';
 <?php if ($flashMsg): ?>
 <div class="msg"><?= h($flashMsg) ?></div>
 <?php endif; ?>
+
+<table style="max-width:360px;margin-bottom:32px;">
+    <tr><th>Seitenaufrufe gesamt</th><td><?= number_format($statsTotal, 0, ',', '.') ?></td></tr>
+    <tr><th>Letzte 7 Tage</th><td><?= number_format($stats7days, 0, ',', '.') ?></td></tr>
+    <tr><th>Heute</th><td><?= number_format($statsToday, 0, ',', '.') ?></td></tr>
+</table>
 
 <h2>Wartend auf Freigabe (<?= count($pending) ?>)</h2>
 <?php if (empty($pending)): ?>
