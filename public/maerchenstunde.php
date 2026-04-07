@@ -1,15 +1,15 @@
 <?php
 $videos = [
-    ['title' => 'Liebe in Märchen',                'file' => 'Lideckes Märchenstunde - Liebe in Märchen.mp4'],
-    ['title' => 'Märchen der Brüder Grimm',         'file' => 'Lideckes Märchenstunde - Märchen der Brüder Grimm.mp4'],
-    ['title' => 'Märchen der Indianer Amerikas',    'file' => 'Lideckes Märchenstunde - Märchen der Indianer Amerikas.mp4'],
-    ['title' => 'Märchen für Kinder',               'file' => 'Lideckes Märchenstunde - Märchen für Kinder.mp4'],
-    ['title' => 'Märchen mit Tieren',               'file' => 'Lideckes Märchenstunde - Märchen mit Tieren.mp4'],
-    ['title' => 'Märchen von Geistern und Dämonen', 'file' => 'Lideckes Märchenstunde - Märchen von Geistern und Dämonen.mp4'],
-    ['title' => 'Märchen von mutigen Tieren',       'file' => 'Lideckes Märchenstunde - Märchen von mutigen Tieren.mp4'],
-    ['title' => 'Russische Märchen',                'file' => 'Lideckes Märchenstunde - Russische Märchen.mp4'],
-    ['title' => 'Türkische Märchen',                'file' => 'Lideckes Märchenstunde - Türkische Märchen.mp4'],
-    ['title' => 'Märchentruhe: Reise um die Welt',  'file' => 'Lideckes Märchentruhe - Reise um die Welt.mp4'],
+    ['title' => 'Liebe in Märchen',                'file' => 'Lideckes Märchenstunde - Liebe in Märchen.mkv'],
+    ['title' => 'Märchen der Brüder Grimm',         'file' => 'Lideckes Märchenstunde - Märchen der Brüder Grimm.mkv'],
+    ['title' => 'Märchen der Indianer Amerikas',    'file' => 'Lideckes Märchenstunde - Märchen der Indianer Amerikas.mkv'],
+    ['title' => 'Märchen für Kinder',               'file' => 'Lideckes Märchenstunde - Märchen für Kinder.mkv'],
+    ['title' => 'Märchen mit Tieren',               'file' => 'Lideckes Märchenstunde - Märchen mit Tieren.mkv'],
+    ['title' => 'Märchen von Geistern und Dämonen', 'file' => 'Lideckes Märchenstunde - Märchen von Geistern und Dämonen.mkv'],
+    ['title' => 'Märchen von mutigen Tieren',       'file' => 'Lideckes Märchenstunde - Märchen von mutigen Tieren.mkv'],
+    ['title' => 'Russische Märchen',                'file' => 'Lideckes Märchenstunde - Russische Märchen.mkv'],
+    ['title' => 'Türkische Märchen',                'file' => 'Lideckes Märchenstunde - Türkische Märchen.mkv'],
+    ['title' => 'Märchentruhe: Reise um die Welt',  'file' => 'Lideckes Märchentruhe - Reise um die Welt.mkv'],
 ];
 
 $count   = count($videos);
@@ -89,7 +89,7 @@ function h(string $s): string {
 
         <div class="plyr-container">
             <video id="player" playsinline controls>
-                <source src="<?= h($src) ?>" type="video/mp4">
+                <source src="<?= h($src) ?>" type="video/x-matroska">
                 Ihr Browser unterstützt keine Videowiedergabe.
             </video>
         </div>
