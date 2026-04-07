@@ -318,6 +318,10 @@ $cap_b = $_SESSION['cap_b'];
     <div class="header-verse">
         <p>Was wir tief in unseren Herzen besitzen,<br>kann uns der Tod nicht rauben.</p>
     </div>
+    <nav class="site-nav">
+        <a href="/maerchenstunde.php" class="site-nav-link">Märchenstunde</a>
+        <a href="/maerchen-und-tanz.php" class="site-nav-link">Märchen &amp; Tanz</a>
+    </nav>
 </header>
 
 <main>

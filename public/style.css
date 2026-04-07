@@ -132,6 +132,39 @@ body {
     margin: 0;
 }
 
+/* ── Site nav ─────────────────────────────────────────── */
+
+.site-nav {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.site-nav-link {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-muted);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.site-nav-link:hover {
+    color: var(--color-accent);
+    border-color: var(--color-border);
+}
+
+.site-nav-link.active {
+    color: var(--color-accent);
+    border-color: var(--color-border);
+    background: var(--color-bg);
+}
+
 /* ── Main content ─────────────────────────────────────── */
 
 main {
@@ -717,6 +750,30 @@ footer a:hover {
     .entry-gallery {
         grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     }
+}
+
+/* ── Märchen & Tanz iframe page ──────────────────────── */
+
+.body-iframe {
+    padding-bottom: 0;
+}
+
+main.main-iframe {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-top: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+main.main-iframe iframe {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 360px);
+    min-height: 480px;
+    border: none;
 }
 
 /* ── Märchenstunde callout (index.php) ────────────────── */

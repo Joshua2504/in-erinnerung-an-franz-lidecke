@@ -20,6 +20,10 @@
             <img src="/images/franz-lidecke-ausgeschnitten-removebg.png" alt="Franz Lidecke">
         </div>
     </div>
+    <nav class="site-nav">
+        <a href="/maerchenstunde.php" class="site-nav-link">Märchenstunde</a>
+        <a href="/maerchen-und-tanz.php" class="site-nav-link">Märchen &amp; Tanz</a>
+    </nav>
 </header>
 
 <main>
