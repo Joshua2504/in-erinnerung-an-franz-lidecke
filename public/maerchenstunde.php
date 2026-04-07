@@ -79,7 +79,7 @@ function h(string $s): string {
     </nav>
 </header>
 
-<main class="main-wide">
+<main>
 
     <section class="video-section">
 
@@ -87,23 +87,19 @@ function h(string $s): string {
         <h2>Lideckes Märchenstunde</h2>
         <p class="video-intro">Franz Lidecke erzählte Märchen aus aller Welt – für Menschen von 4 bis 90 Jahren. Diese Aufnahmen bewahren seine Stimme und sein Können als Märchenerzähler.</p>
 
-        <div class="video-layout">
+        <div class="plyr-container">
+            <video id="player" playsinline controls>
+                <source src="<?= h($src) ?>" type="video/x-matroska">
+                Ihr Browser unterstützt keine Videowiedergabe.
+            </video>
+        </div>
+        <p class="video-title"><?= h($current['title']) ?></p>
+        <p class="video-meta">Folge <?= $active + 1 ?> von <?= $count ?><?php if ($hasNext): ?> &nbsp;&middot;&nbsp; Weiter: <?= h($videos[$next]['title']) ?><?php endif; ?></p>
+        <p class="video-compat-note">Die Videos liegen im MKV-Format vor und werden zuverlässig in Chrome und Edge abgespielt. Firefox und Safari unterstützen dieses Format in der Regel nicht.</p>
 
-            <div class="video-main">
-                <div class="plyr-container">
-                    <video id="player" playsinline controls>
-                        <source src="<?= h($src) ?>" type="video/x-matroska">
-                        Ihr Browser unterstützt keine Videowiedergabe.
-                    </video>
-                </div>
-                <p class="video-title"><?= h($current['title']) ?></p>
-                <p class="video-meta">Folge <?= $active + 1 ?> von <?= $count ?><?php if ($hasNext): ?> &nbsp;&middot;&nbsp; Weiter: <?= h($videos[$next]['title']) ?><?php endif; ?></p>
-                <p class="video-compat-note">Die Videos liegen im MKV-Format vor und werden zuverlässig in Chrome und Edge abgespielt. Firefox und Safari unterstützen dieses Format in der Regel nicht.</p>
-            </div>
-
-            <aside class="video-sidebar">
-                <p class="playlist-heading">Alle Folgen</p>
-                <ol class="playlist">
+        <aside class="video-sidebar">
+            <p class="playlist-heading">Alle Folgen</p>
+            <ol class="playlist">
                     <?php foreach ($videos as $i => $video): ?>
                     <li class="playlist-item<?= $i === $active ? ' active' : '' ?>">
                         <a href="/maerchenstunde.php?v=<?= $i ?>">
@@ -118,7 +114,6 @@ function h(string $s): string {
                 </ol>
             </aside>
 
-        </div>
     </section>
 
 </main>
