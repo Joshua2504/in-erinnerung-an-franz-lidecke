@@ -285,10 +285,21 @@ $cap_b = $_SESSION['cap_b'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>In Erinnerung an Franz Lidecke</title>
+    <title>In Erinnerung an Franz Lidecke (1937–2026)</title>
+    <meta name="description" content="Gedenkseite für Franz Lidecke, Märchenerzähler, Lehrer und Buchautor. 14. November 1937 – 3. April 2026. Hinterlassen Sie einen Eintrag im Kondolenzbuch.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://franz-lidecke.de/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://franz-lidecke.de/">
+    <meta property="og:title" content="In Erinnerung an Franz Lidecke (1937–2026)">
+    <meta property="og:description" content="Gedenkseite für Franz Lidecke, Märchenerzähler, Lehrer und Buchautor. Hinterlassen Sie einen Eintrag im Kondolenzbuch.">
+    <meta property="og:image" content="https://franz-lidecke.de/images/franz-lidecke-ausgeschnitten.png">
+    <meta property="og:locale" content="de_DE">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-    <meta name="robots" content="index, follow">
 </head>
 <body>
 
