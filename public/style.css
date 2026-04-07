@@ -132,6 +132,14 @@ body {
     margin: 0;
 }
 
+/* ── Header home link ─────────────────────────────────── */
+
+.header-home-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 /* ── Site nav ─────────────────────────────────────────── */
 
 .site-nav {

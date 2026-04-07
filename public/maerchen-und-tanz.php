@@ -11,18 +11,21 @@
 <body class="body-iframe">
 
 <header class="site-header">
-    <div class="header-inner">
-        <div class="header-text">
-            <p class="in-erinnerung">In liebevoller Erinnerung</p>
-            <h1 class="name">Franz Lidecke</h1>
-            <p class="dates"><span class="date-symbol">*</span> 14. November 1937 &nbsp;&nbsp; <span class="date-symbol">&#8224;</span> 3. April 2026</p>
-            <p class="subtitle">Märchenerzähler &middot; Lehrer &middot; Buchautor</p>
+    <a href="/" class="header-home-link">
+        <div class="header-inner">
+            <div class="header-text">
+                <p class="in-erinnerung">In liebevoller Erinnerung</p>
+                <h1 class="name">Franz Lidecke</h1>
+                <p class="dates"><span class="date-symbol">*</span> 14. November 1937 &nbsp;&nbsp; <span class="date-symbol">&#8224;</span> 3. April 2026</p>
+                <p class="subtitle">Märchenerzähler &middot; Lehrer &middot; Buchautor</p>
+            </div>
+            <div class="header-photo">
+                <img src="/images/franz-lidecke-ausgeschnitten-removebg.png" alt="Franz Lidecke">
+            </div>
         </div>
-        <div class="header-photo">
-            <img src="/images/franz-lidecke-ausgeschnitten-removebg.png" alt="Franz Lidecke">
-        </div>
-    </div>
+    </a>
     <nav class="site-nav">
+        <a href="/" class="site-nav-link">Kondolenzbuch</a>
         <a href="/maerchenstunde.php" class="site-nav-link">Märchenstunde</a>
         <a href="/maerchen-und-tanz.php" class="site-nav-link active">Märchen &amp; Tanz</a>
     </nav>
