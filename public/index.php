@@ -423,7 +423,7 @@ $cap_b = $_SESSION['cap_b'];
 </main>
 
 <footer>
-    <p>&copy; Joshua Treudler &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a></p>
+    <p>&copy; Joshua Treudler &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>

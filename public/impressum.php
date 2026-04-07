@@ -37,7 +37,7 @@
 </main>
 
 <footer>
-    <p>&copy; Joshua Treudler &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a></p>
+    <p>&copy; Joshua Treudler &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 </body>
