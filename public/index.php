@@ -309,7 +309,7 @@ $cap_b = $_SESSION['cap_b'];
             <p class="in-erinnerung">In liebevoller Erinnerung</p>
             <h1 class="name">Franz Lidecke</h1>
             <p class="dates"><span class="date-symbol">*</span> 14. November 1937 &nbsp;&nbsp; <span class="date-symbol">&#8224;</span> 3. April 2026</p>
-            <p class="subtitle">Märchenerzähler &middot; Lehrer &middot; Buchautor &middot; &bdquo;Opa&ldquo;</p>
+            <p class="subtitle">Märchenerzähler &middot; Lehrer &middot; Buchautor</p>
         </div>
         <div class="header-photo">
             <img src="/images/franz-lidecke-ausgeschnitten-removebg.png" alt="Franz Lidecke">
@@ -482,7 +482,7 @@ $cap_b = $_SESSION['cap_b'];
 </main>
 
 <footer>
-    <p>&copy; Joshua Treudler &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p><a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 <div id="cookieBanner" class="cookie-banner" hidden>
