@@ -4,13 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'public/**'
-      - 'docker-compose.yml'
-      - 'Dockerfile'
-      - 'docker-entrypoint.sh'
-      - 'php.ini'
-      - 'composer.json'
 
 permissions:
   contents: read
