@@ -325,8 +325,8 @@ $cap_b = $_SESSION['cap_b'];
     <section class="obituary">
         <p>
             Franz Lidecke wurde 1937 in Hannover geboren. 1942 zog seine Mutter mit ihm und
-            seinen drei Geschwistern nach Wehdel bei Bremerhaven, 1949 folgte die ganze Familie
-            nach Bremerhaven. Dort legte er 1958 sein Abitur ab, wurde anschließend zur Bundeswehr
+            seinen drei Geschwistern nach Wehdel, einem kleinen Ort unweit Bremerhavens; 1949
+            folgte die ganze Familie in die Stadt selbst. Dort legte er 1958 sein Abitur ab, wurde anschließend zur Bundeswehr
             eingezogen und Ende 1959 als Leutnant der Reserve entlassen. Die Zeit bis zum Studium
             überbrückte er als Aushilfssteward auf dem Passagierschiff „Berlin" — mit Fahrten nach
             Kanada, in die USA und zu den Westindischen Inseln.
