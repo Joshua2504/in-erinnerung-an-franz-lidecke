@@ -359,6 +359,9 @@ $cap_b = $_SESSION['cap_b'];
             ihn sehr. Auf dieser Seite können Familie, Freunde und alle, die Franz Lidecke kannten,
             Abschiedsworte und Erinnerungen hinterlassen.
         </p>
+        <p class="marchen-video-callout">
+            <a href="/maerchenstunde.php" class="marchen-video-link">Lideckes Märchenstunde ansehen &rarr;</a>
+        </p>
     </section>
 
     <?php if ($flashSuccess): ?>
@@ -483,7 +486,7 @@ $cap_b = $_SESSION['cap_b'];
 </main>
 
 <footer>
-    <p><a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p><a href="/maerchenstunde.php">Märchenstunde</a> &nbsp;&middot;&nbsp; <a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 <div id="cookieBanner" class="cookie-banner" hidden>

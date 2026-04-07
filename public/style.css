@@ -718,3 +718,193 @@ footer a:hover {
         grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     }
 }
+
+/* ── Märchenstunde callout (index.php) ────────────────── */
+
+.marchen-video-callout {
+    margin: 20px 0 0;
+    font-style: normal;
+}
+
+.marchen-video-link {
+    display: inline-block;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    padding: 8px 16px;
+    letter-spacing: 0.03em;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.marchen-video-link:hover {
+    background: var(--color-bg);
+    border-color: var(--color-accent);
+}
+
+/* ── Video page ───────────────────────────────────────── */
+
+main.main-wide {
+    max-width: 1140px;
+    padding: 32px 36px 48px;
+}
+
+.video-back-link {
+    margin: 0 0 28px;
+    font-size: 0.88rem;
+}
+
+.video-back-link a {
+    color: var(--color-muted);
+    text-decoration: none;
+}
+
+.video-back-link a:hover {
+    color: var(--color-accent);
+}
+
+.video-intro {
+    color: var(--color-muted);
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: -8px 0 28px;
+    line-height: 1.7;
+}
+
+.video-layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.video-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.plyr-container {
+    width: 100%;
+    background: #1a1410;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.video-title {
+    font-size: 1.15rem;
+    font-weight: normal;
+    color: var(--color-accent);
+    margin: 16px 0 4px;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.video-meta {
+    font-size: 0.83rem;
+    color: var(--color-muted);
+    margin: 0 0 8px;
+}
+
+.video-compat-note {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    margin: 0;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.video-sidebar {
+    width: 290px;
+    flex-shrink: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.playlist-heading {
+    font-size: 0.72rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-muted);
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid var(--color-border);
+    margin: 0;
+}
+
+.playlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 540px;
+    overflow-y: auto;
+}
+
+.playlist-item {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.playlist-item:last-child {
+    border-bottom: none;
+}
+
+.playlist-item a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 11px 14px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    transition: background 0.12s;
+}
+
+.playlist-item a:hover {
+    background: var(--color-bg);
+}
+
+.playlist-item.active a {
+    background: var(--color-accent);
+    color: #faf8f5;
+}
+
+.playlist-num {
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    min-width: 18px;
+    text-align: right;
+    flex-shrink: 0;
+    line-height: 1.6;
+}
+
+.playlist-item.active .playlist-num {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.playlist-label {
+    flex: 1;
+}
+
+.playlist-playing {
+    font-size: 0.6rem;
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+    main.main-wide {
+        padding: 24px 20px 40px;
+    }
+
+    .video-layout {
+        flex-direction: column;
+    }
+
+    .video-sidebar {
+        width: 100%;
+    }
+
+    .playlist {
+        max-height: 260px;
+    }
+}
