@@ -355,8 +355,9 @@ $cap_b = $_SESSION['cap_b'];
             Jahren sowie für Erwachsene.
         </p>
         <p>
-            Wir vermissen ihn sehr. Auf dieser Seite können Familie, Freunde und alle,
-            die Franz Lidecke kannten, Abschiedsworte und Erinnerungen hinterlassen.
+            Am 3. April 2026 ist Franz Lidecke im Alter von 88 Jahren verstorben. Wir vermissen
+            ihn sehr. Auf dieser Seite können Familie, Freunde und alle, die Franz Lidecke kannten,
+            Abschiedsworte und Erinnerungen hinterlassen.
         </p>
     </section>
 
