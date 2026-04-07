@@ -323,7 +323,7 @@ $cap_b = $_SESSION['cap_b'];
         <h2>Kondolenzbuch</h2>
 
         <?php if (empty($entries)): ?>
-            <p class="no-entries">Noch keine Einträge vorhanden. Seien Sie der Erste.</p>
+            <p class="no-entries">Noch keine Einträge vorhanden.</p>
         <?php else: ?>
             <?php foreach ($entries as $entry): ?>
             <article class="entry">
@@ -376,7 +376,7 @@ $cap_b = $_SESSION['cap_b'];
                 </div>
 
                 <div class="form-field">
-                    <label for="email">E-Mail <span class="optional">(optional – für Benachrichtigung bei Freischaltung)</span></label>
+                    <label for="email">E-Mail <span class="optional">(optional – nur für Benachrichtigung bei Freischaltung, nicht öffentlich sichtbar)</span></label>
                     <input type="email" id="email" name="email"
                            value="<?= h($_POST['email'] ?? '') ?>"
                            maxlength="200" autocomplete="email">
