@@ -1,6 +1,6 @@
 # In Erinnerung an Franz Lidecke
 
-Gedenkwebsite mit öffentlichem Kondolenzbuch unter franz-lidecke.de.
+Gedenkwebsite mit öffentlichem Kondolenzbuch unter [franz-lidecke.de](https://franz-lidecke.de).
 
 ## Stack
 
@@ -8,25 +8,28 @@ Gedenkwebsite mit öffentlichem Kondolenzbuch unter franz-lidecke.de.
 - SQLite mit WAL-Modus
 - PHPMailer für E-Mail-Benachrichtigungen
 - GLightbox für die Bildergalerie
+- Google Analytics (mit Cookie-Consent-Banner)
 
 ## Lokale Entwicklung
 
 ```sh
+cp .env.example .env.local   # Werte anpassen
 docker compose up --build
 # → http://localhost:8997
-```
-
-Für das Admin-Panel wird eine `.env.local` benötigt:
-
-```sh
-cp .env.example .env.local  # oder manuell anlegen, siehe unten
 ```
 
 ## Deployment
 
 Push auf `main` löst GitHub Actions aus (rsync → `krakatau.treudler.net`).
 
-**Benötigtes GitHub Secret:** `SSH_KEY` (privater SSH-Schlüssel für root@krakatau.treudler.net)
+**Benötigte GitHub Secrets & Variables:**
+
+| Name | Typ | Wert |
+|---|---|---|
+| `SSH_KEY` | Secret | Privater SSH-Schlüssel |
+| `SSH_HOST` | Variable | `krakatau.treudler.net` |
+| `SSH_USER` | Variable | `root` |
+| `SSH_PATH` | Variable | `/root/docker/franz` |
 
 ## Server-Setup (einmalig)
 
@@ -48,7 +51,9 @@ Danach das erste Deployment anstoßen (Push auf `main`).
 https://franz-lidecke.de/admin.php?token=<ADMIN_TOKEN>
 ```
 
-- **Wartende Einträge** freigeben oder löschen
+- Seitenaufruf-Statistiken (gesamt, letzte 7 Tage, heute)
+- Wartende Einträge freigeben oder ablehnen
+- Freigegebene Einträge nachträglich zurückziehen oder löschen
 - Bei Freigabe erhält der Einsender eine Bestätigungs-E-Mail (falls angegeben)
 - Bei Löschung werden auch alle hochgeladenen Fotos entfernt
 
