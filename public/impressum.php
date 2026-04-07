@@ -34,6 +34,36 @@
             <a href="/" style="color: var(--color-accent);">&larr; Zurück zur Gedenkseite</a>
         </p>
     </section>
+
+    <section>
+        <h2>Datenschutzerklärung</h2>
+        <h3>Verantwortlicher</h3>
+        <p>
+            Joshua Tobias Treudler<br>
+            Hinter der Schönen Aussicht 10<br>
+            DE &ndash; 60311 Frankfurt am Main
+        </p>
+        <h3>Erhebung und Speicherung personenbezogener Daten</h3>
+        <p>
+            Diese Website erhebt beim Besuch automatisch technische Zugriffsdaten (IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Seite, Browsertyp). Diese Daten werden ausschließlich zur Sicherstellung des Betriebs der Website verwendet und nicht an Dritte weitergegeben.
+        </p>
+        <h3>Gästebuch</h3>
+        <p>
+            Beiträge im Gästebuch werden auf meinem Server gespeichert. Bitte tragen Sie dort keine personenbezogenen Daten ein, die Sie nicht veröffentlicht sehen möchten. Ein eingetragener Name erscheint öffentlich auf der Gedenkseite.
+        </p>
+        <h3>Keine Weitergabe an Dritte</h3>
+        <p>
+            Es werden keine personenbezogenen Daten an Dritte weitergegeben, verkauft oder zu Werbezwecken genutzt.
+        </p>
+        <h3>Google Analytics</h3>
+        <p>
+            Diese Website verwendet Google Analytics, einen Webanalysedienst der Google LLC. Google Analytics erfasst Nutzungsdaten (u.&thinsp;a. IP-Adresse, aufgerufene Seiten, Verweildauer) und übermittelt diese an Server von Google in den USA. Die IP-Adresse wird dabei anonymisiert. Rechtsgrundlage ist Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;f DSGVO (berechtigtes Interesse an der Websiteanalyse). Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color: var(--color-accent);">Google Datenschutzerklärung</a>.
+        </p>
+        <h3>Ihre Rechte</h3>
+        <p>
+            Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer gespeicherten Daten. Wenden Sie sich dazu an die oben genannte Adresse.
+        </p>
+    </section>
 </main>
 
 <footer>
