@@ -36,7 +36,9 @@
         <p>
             Joshua Tobias Treudler<br>
             Hinter der Schönen Aussicht 10<br>
-            DE &ndash; 60311 Frankfurt am Main
+            DE &ndash; 60311 Frankfurt am Main<br>
+            <span class="email-obf" data-u="joshua" data-d="treudler.net"></span>
+            <noscript><em>E-Mail: joshua [at] treudler.net</em></noscript>
         </p>
         <p style="margin-top: 24px;">
             <a href="/" style="color: var(--color-accent);"><?= t('impressum_back_link') ?></a>
@@ -70,5 +72,11 @@
     <p style="margin-top:6px;font-size:0.78rem;"><?= number_format($footerStats['hits'], 0, ',', '.') ?> <?= htmlspecialchars(t('footer_hits'), ENT_QUOTES, 'UTF-8') ?> &nbsp;&middot;&nbsp; <?= number_format($footerStats['unique'], 0, ',', '.') ?> <?= htmlspecialchars(t('footer_unique'), ENT_QUOTES, 'UTF-8') ?></p>
 </footer>
 
+<script>
+document.querySelectorAll('.email-obf').forEach(function(el) {
+    var e = el.dataset.u + '\u0040' + el.dataset.d;
+    el.innerHTML = '<a href="mailto:' + e + '">' + e + '</a>';
+});
+</script>
 </body>
 </html>
