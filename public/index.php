@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/lang.php';
 
 // ── Database ───────────────────────────────────────────────────────────────
 $dbPath = '/var/www/data/guestbook.db';
@@ -129,17 +130,6 @@ function h(string $s): string {
     return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 }
 
-function fmt_date(string $dt): string {
-    static $months = [
-        1 => 'Januar', 2 => 'Februar', 3 => 'März', 4 => 'April',
-        5 => 'Mai', 6 => 'Juni', 7 => 'Juli', 8 => 'August',
-        9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Dezember',
-    ];
-    $ts = strtotime($dt);
-    if (!$ts) return $dt;
-    return (int) date('j', $ts) . '. ' . $months[(int) date('n', $ts)] . ' ' . date('Y', $ts);
-}
-
 // ── POST handler ───────────────────────────────────────────────────────────
 $errors = [];
 
@@ -148,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $db->prepare('SELECT COUNT(*) FROM entries WHERE cookie_token = ? AND created_at > datetime("now", "-1 hour")');
     $stmt->execute([$visitorToken]);
     if ((int) $stmt->fetchColumn() >= 3) {
-        $errors[] = 'Sie haben bereits mehrere Einträge hinterlassen. Bitte warten Sie eine Stunde.';
+        $errors[] = t('err_rate_limit');
     }
 
     // Fields
@@ -157,12 +147,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message   = trim($_POST['message'] ?? '');
     $anonymous = isset($_POST['anonymous']) ? 1 : 0;
 
-    if (mb_strlen($name) < 2)       $errors[] = 'Bitte geben Sie Ihren Namen ein (mindestens 2 Zeichen).';
-    if (mb_strlen($name) > 100)     $errors[] = 'Der Name ist zu lang (maximal 100 Zeichen).';
-    if (mb_strlen($message) < 5)    $errors[] = 'Bitte schreiben Sie eine Nachricht (mindestens 5 Zeichen).';
-    if (mb_strlen($message) > 2000) $errors[] = 'Die Nachricht ist zu lang (maximal 2000 Zeichen).';
+    if (mb_strlen($name) < 2)       $errors[] = t('err_name_short');
+    if (mb_strlen($name) > 100)     $errors[] = t('err_name_long');
+    if (mb_strlen($message) < 5)    $errors[] = t('err_message_short');
+    if (mb_strlen($message) > 2000) $errors[] = t('err_message_long');
     if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Die E-Mail-Adresse ist ungültig.';
+        $errors[] = t('err_email_invalid');
     }
 
     if (empty($errors)) {
@@ -208,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $adminEmail = getenv('ADMIN_EMAIL') ?: '';
         $adminToken = getenv('ADMIN_TOKEN') ?: '';
         if ($adminEmail) {
-            $adminLink      = 'https://franz-lidecke.de/admin.php?token=' . urlencode($adminToken);
+            $adminLink      = 'https://franz-lidecke.de/admin?token=' . urlencode($adminToken);
             $escapedName    = h($name) . ($anonymous ? ' <em>(anonym)</em>' : '');
             $escapedMessage = nl2br(h($message));
             send_mail(
@@ -261,23 +251,23 @@ if ($entries) {
 
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $LANG ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>In Erinnerung an Franz Lidecke (1937–2026)</title>
-    <meta name="description" content="Gedenkseite für Franz Lidecke – Märchenerzähler, Lehrer und Buchautor aus Bremerhaven. 14. November 1937 – 3. April 2026. Kondolenzbuch, Videoaufnahmen und Erinnerungen.">
+    <title><?= h(t('meta_title_main')) ?></title>
+    <meta name="description" content="<?= h(t('meta_desc_main')) ?>">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://franz-lidecke.de/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="In Erinnerung an Franz Lidecke">
+    <meta property="og:site_name" content="<?= h(t('og_site_name')) ?>">
     <meta property="og:url" content="https://franz-lidecke.de/">
-    <meta property="og:title" content="In Erinnerung an Franz Lidecke (1937–2026)">
-    <meta property="og:description" content="Gedenkseite für Franz Lidecke – Märchenerzähler, Lehrer und Buchautor aus Bremerhaven. Kondolenzbuch, Videoaufnahmen und Erinnerungen.">
+    <meta property="og:title" content="<?= h(t('meta_title_main')) ?>">
+    <meta property="og:description" content="<?= h(t('meta_desc_main')) ?>">
     <meta property="og:image" content="https://franz-lidecke.de/images/franz-lidecke-traueranzeige.jpeg">
-    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale" content="<?= $ogLocale ?>">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
@@ -288,79 +278,49 @@ if ($entries) {
     <a href="/" class="header-home-link">
         <div class="header-inner">
             <div class="header-text">
-                <p class="in-erinnerung">In liebevoller Erinnerung</p>
+                <p class="in-erinnerung"><?= t('header_in_loving_memory') ?></p>
                 <h1 class="name">Franz Lidecke</h1>
                 <p class="dates"><span class="date-symbol">*</span> 14. November 1937 &nbsp;&nbsp; <span class="date-symbol">&#8224;</span> 3. April 2026</p>
-                <p class="subtitle">Märchenerzähler &middot; Lehrer &middot; Buchautor</p>
+                <p class="subtitle"><?= t('header_subtitle') ?></p>
             </div>
             <div class="header-photo">
                 <img src="/images/franz-lidecke-ausgeschnitten-removebg.png" alt="Franz Lidecke">
             </div>
         </div>
         <div class="header-verse">
-            <p>Was wir tief in unseren Herzen besitzen,<br>kann uns der Tod nicht rauben.</p>
+            <p><?= t('header_verse') ?></p>
         </div>
     </a>
     <nav class="site-nav">
-        <a href="/" class="site-nav-link active">Kondolenzbuch</a>
-        <a href="/maerchenstunde.php" class="site-nav-link">Märchenstunde</a>
-        <a href="/maerchen-und-tanz.php" class="site-nav-link">Märchen &amp; Tanz</a>
+        <a href="/" class="site-nav-link active"><?= t('nav_guestbook') ?></a>
+        <a href="/maerchenstunde" class="site-nav-link"><?= t('nav_story_hour') ?></a>
+        <a href="/maerchen-und-tanz" class="site-nav-link"><?= t('nav_tales_dance') ?></a>
+        <?= lang_switcher() ?>
     </nav>
 </header>
 
 <main>
 
     <section class="obituary">
-        <p>
-            Franz Lidecke wurde 1937 in Hannover geboren. 1942 zog seine Mutter mit ihm und
-            seinen drei Geschwistern nach Wehdel, einem kleinen Ort unweit Bremerhavens; 1949
-            folgte die ganze Familie in die Stadt selbst. Dort legte er 1958 sein Abitur ab, wurde anschließend zur Bundeswehr
-            eingezogen und Ende 1959 als Leutnant der Reserve entlassen. Die Zeit bis zum Studium
-            überbrückte er als Aushilfssteward auf dem Passagierschiff „Berlin" — mit Fahrten nach
-            Kanada, in die USA und zu den Westindischen Inseln.
-        </p>
-        <p>
-            Von 1960 bis 1963 studierte er an der Pädagogischen Hochschule Bremen und trat
-            anschließend seinen Dienst im Bremerhavener Schuldienst an, wo er bis zu seiner
-            Pensionierung im Jahr 2000 Grund-, Haupt- und Realschüler sowie Gymnasiasten in
-            Deutsch, Englisch, Erdkunde, Geschichte, Sport und Musik unterrichtete.
-        </p>
-        <p>
-            Seit 1952 war Franz als Übungsleiter in Turnvereinen tätig und leitete Gruppen
-            im Jungen-, Mädchen- und Erwachsenenturnen. Zwölf Jahre lang führte er während
-            der Schulferien Radwandergruppen des Jugendherbergsverbandes mit Jugendlichen aus
-            ganz Deutschland durch Norddeutschland. 1962 und 1964 half er je acht Wochen als
-            Helfer in einem internationalen Ferienlager in den USA (Camp Timanous, Maine).
-            Auf Grundlage seiner langjährigen Praxis verfasste er 2005 drei Lehrbücher für
-            Sportlehrer in Schule und Verein.
-        </p>
-        <p>
-            Als leidenschaftlicher Weltreisender plante und führte Franz über 60 Studienreisen
-            in viele Länder der Erde durch. 1996 begann er eine Ausbildung zum Märchenerzähler
-            in der Europäischen Märchengesellschaft. Seitdem erzählte er Märchen aus aller Welt
-            für Menschen von 4 bis 90 Jahren — in Deutschland und auf Studienreisen rund um den
-            Globus. 2009 veröffentlichte er vier Märchen-CDs für Kinder ab 5, ab 7 und ab 9
-            Jahren sowie für Erwachsene.
-        </p>
-        <p>
-            Am 3. April 2026 ist Franz Lidecke im Alter von 88 Jahren verstorben. Wir vermissen
-            ihn sehr. Auf dieser Seite können Familie, Freunde und alle, die Franz Lidecke kannten,
-            Abschiedsworte und Erinnerungen hinterlassen.
-        </p>
+        <p><?= t('obituary_para_1') ?></p>
+        <p><?= t('obituary_para_2') ?></p>
+        <p><?= t('obituary_para_3') ?></p>
+        <p><?= t('obituary_para_4') ?></p>
+        <p><?= t('obituary_para_5') ?></p>
         <p class="marchen-video-callout">
-            <a href="/maerchenstunde.php" class="marchen-video-link">Lideckes Märchenstunde ansehen &rarr;</a>
+            <a href="/maerchenstunde" class="marchen-video-link"><?= t('obituary_video_link') ?></a>
         </p>
     </section>
 
     <?php if ($flashSuccess): ?>
     <div class="banner banner-success">
-        Vielen Dank für Ihren Eintrag. Er wird nach Prüfung freigeschaltet.
+        <?= h(t('banner_success')) ?>
     </div>
     <?php endif; ?>
 
     <?php if ($errors): ?>
     <div class="banner banner-error">
-        <strong>Bitte korrigieren Sie folgende Fehler:</strong>
+        <strong><?= h(t('banner_error_heading')) ?></strong>
         <ul>
             <?php foreach ($errors as $err): ?>
                 <li><?= h($err) ?></li>
@@ -371,16 +331,16 @@ if ($entries) {
 
     <!-- Entries -->
     <section>
-        <h2>Kondolenzbuch</h2>
+        <h2><?= h(t('entries_heading')) ?></h2>
 
         <?php if (empty($entries)): ?>
-            <p class="no-entries">Noch keine Einträge vorhanden.</p>
+            <p class="no-entries"><?= h(t('entries_none')) ?></p>
         <?php else: ?>
             <?php foreach ($entries as $entry): ?>
             <article class="entry">
                 <div class="entry-meta">
                     <span class="entry-name">
-                        <?= $entry['anonymous'] ? 'Anonym' : h($entry['name']) ?>
+                        <?= $entry['anonymous'] ? h(t('anonymous')) : h($entry['name']) ?>
                     </span>
                     <span class="entry-date"><?= h(fmt_date($entry['created_at'])) ?></span>
                 </div>
@@ -393,7 +353,7 @@ if ($entries) {
                        class="glightbox"
                        data-gallery="entry-<?= (int)$entry['id'] ?>">
                         <img src="/uploads/thumb_<?= h($filename) ?>"
-                             alt="Foto von <?= $entry['anonymous'] ? 'Anonym' : h($entry['name']) ?>"
+                             alt="<?= h(t('photo_alt')) ?> <?= $entry['anonymous'] ? h(t('anonymous')) : h($entry['name']) ?>"
                              loading="lazy">
                     </a>
                     <?php endforeach; ?>
@@ -406,13 +366,13 @@ if ($entries) {
 
     <!-- Form -->
     <section class="form-section">
-        <h2>Eintrag hinterlassen</h2>
+        <h2><?= h(t('form_heading')) ?></h2>
 
         <form method="POST" enctype="multipart/form-data" action="/" id="entryForm">
             <div class="form-grid">
 
                 <div class="form-field">
-                    <label for="name">Name</label>
+                    <label for="name"><?= h(t('form_name')) ?></label>
                     <input type="text" id="name" name="name"
                            value="<?= h($_POST['name'] ?? '') ?>"
                            maxlength="100" required autocomplete="name">
@@ -422,36 +382,36 @@ if ($entries) {
                     <label class="checkbox-label">
                         <input type="checkbox" name="anonymous" value="1"
                                <?= !empty($_POST['anonymous']) ? 'checked' : '' ?>>
-                        Namen öffentlich verstecken <span class="optional">(erscheint als „Anonym")</span>
+                        <?= h(t('form_hide_name')) ?> <span class="optional">(<?= t('form_appears_as_anon') ?>)</span>
                     </label>
                 </div>
 
                 <div class="form-field">
-                    <label for="email">E-Mail <span class="optional">(optional – nur für Benachrichtigung bei Freischaltung, nicht öffentlich sichtbar)</span></label>
+                    <label for="email"><?= h(t('form_email')) ?> <span class="optional">(<?= t('form_email_hint') ?>)</span></label>
                     <input type="email" id="email" name="email"
                            value="<?= h($_POST['email'] ?? '') ?>"
                            maxlength="200" autocomplete="email">
                 </div>
 
                 <div class="form-field">
-                    <label for="message">Nachricht</label>
+                    <label for="message"><?= h(t('form_message')) ?></label>
                     <textarea id="message" name="message" maxlength="2000" required><?= h($_POST['message'] ?? '') ?></textarea>
                 </div>
 
                 <!-- Upload zone -->
                 <div class="form-field">
-                    <label>Fotos <span class="optional">(optional, bis zu 20)</span></label>
+                    <label><?= h(t('form_photos')) ?> <span class="optional">(<?= h(t('form_photos_optional')) ?>)</span></label>
                     <div class="upload-zone" id="uploadZone">
-                        <p class="upload-hint">Bilder hierher ziehen oder</p>
-                        <button type="button" class="upload-btn" id="uploadBtn">Fotos auswählen</button>
-                        <p class="upload-hint upload-hint-small">Bis zu 20 Fotos &middot; JPEG, PNG, WebP, GIF &middot; max. 20 MB pro Datei</p>
+                        <p class="upload-hint"><?= h(t('form_drag_hint')) ?></p>
+                        <button type="button" class="upload-btn" id="uploadBtn"><?= h(t('form_select_btn')) ?></button>
+                        <p class="upload-hint upload-hint-small"><?= t('form_upload_hint') ?></p>
                     </div>
                     <input type="file" id="images" name="images[]" multiple accept="image/*" style="display:none">
                     <div class="upload-previews" id="uploadPreviews"></div>
                 </div>
 
                 <div class="form-submit">
-                    <button type="submit" class="btn-submit" id="submitBtn">Eintrag hinterlassen</button>
+                    <button type="submit" class="btn-submit" id="submitBtn"><?= h(t('form_submit')) ?></button>
                     <div class="upload-progress" id="uploadProgress" hidden>
                         <div class="upload-progress-bar">
                             <div class="upload-progress-fill" id="uploadProgressBar"></div>
@@ -467,20 +427,29 @@ if ($entries) {
 </main>
 
 <footer>
-    <p><a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p><a href="/impressum"><?= h(t('footer_legal')) ?></a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 <div id="cookieBanner" class="cookie-banner" hidden>
     <p class="cookie-text">
-        Diese Website verwendet Google Analytics, um Seitenaufrufe anonym zu erfassen.
+        <?= h(t('cookie_text')) ?>
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutz</a>
     </p>
     <div class="cookie-actions">
-        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Akzeptieren</button>
-        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Ablehnen</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept"><?= h(t('cookie_accept')) ?></button>
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline"><?= h(t('cookie_decline')) ?></button>
     </div>
 </div>
 
+<script>
+const i18n = <?= json_encode([
+    'errHeading'  => t('js_err_heading'),
+    'errUnknown'  => t('js_err_unknown'),
+    'errServer'   => t('js_err_server'),
+    'errNetwork'  => t('js_err_network'),
+    'removeLabel' => t('js_remove_label'),
+], JSON_UNESCAPED_UNICODE) ?>;
+</script>
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script>GLightbox({ selector: '.glightbox' });</script>
 <script>
@@ -579,7 +548,7 @@ if ($entries) {
             del.type = 'button';
             del.className = 'preview-remove';
             del.innerHTML = '&times;';
-            del.setAttribute('aria-label', 'Entfernen');
+            del.setAttribute('aria-label', i18n.removeLabel);
             del.addEventListener('click', () => removeFile(i));
 
             const name = document.createElement('span');
@@ -641,17 +610,17 @@ if ($entries) {
                 if (res.ok) {
                     window.location.href = '/';
                 } else {
-                    showErrors(res.errors || ['Unbekannter Fehler.']);
+                    showErrors(res.errors || [i18n.errUnknown]);
                     resetBtn();
                 }
             } catch {
-                showErrors(['Serverfehler. Bitte erneut versuchen.']);
+                showErrors([i18n.errServer]);
                 resetBtn();
             }
         });
 
         xhr.addEventListener('error', () => {
-            showErrors(['Netzwerkfehler. Bitte erneut versuchen.']);
+            showErrors([i18n.errNetwork]);
             resetBtn();
         });
 
@@ -673,7 +642,7 @@ if ($entries) {
     function showErrors(errs) {
         const div = document.createElement('div');
         div.className = 'banner banner-error';
-        div.innerHTML = '<strong>Bitte korrigieren Sie folgende Fehler:</strong><ul>'
+        div.innerHTML = '<strong>' + i18n.errHeading + '</strong><ul>'
             + errs.map(e => '<li>' + e.replace(/</g, '&lt;') + '</li>').join('')
             + '</ul>';
         form.closest('section').insertBefore(div, form);

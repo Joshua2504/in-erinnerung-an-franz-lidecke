@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = 'Eintrag gelöscht.';
     }
 
-    header('Location: /admin.php' . $tokenParam . ($message ? '&msg=' . urlencode($message) : ''));
+    header('Location: /admin' . $tokenParam . ($message ? '&msg=' . urlencode($message) : ''));
     exit;
 }
 
@@ -194,11 +194,11 @@ $flashMsg = $_GET['msg'] ?? '';
             <td style="white-space:nowrap"><?= h($row['created_at']) ?></td>
             <td><?= isset($imgCounts[$row['id']]) ? (int)$imgCounts[$row['id']] : 0 ?></td>
             <td class="actions">
-                <form method="POST" action="/admin.php<?= h($tokenParam) ?>">
+                <form method="POST" action="/admin<?= h($tokenParam) ?>">
                     <input type="hidden" name="approve_id" value="<?= (int)$row['id'] ?>">
                     <button class="btn btn-approve" type="submit">Freigeben</button>
                 </form>
-                <form method="POST" action="/admin.php<?= h($tokenParam) ?>"
+                <form method="POST" action="/admin<?= h($tokenParam) ?>"
                       onsubmit="return confirm('Eintrag wirklich löschen?')">
                     <input type="hidden" name="delete_id" value="<?= (int)$row['id'] ?>">
                     <button class="btn btn-delete" type="submit">Löschen</button>
@@ -241,11 +241,11 @@ $flashMsg = $_GET['msg'] ?? '';
             <td style="white-space:nowrap"><?= h($row['created_at']) ?></td>
             <td><?= isset($imgCounts[$row['id']]) ? (int)$imgCounts[$row['id']] : 0 ?></td>
             <td class="actions">
-                <form method="POST" action="/admin.php<?= h($tokenParam) ?>">
+                <form method="POST" action="/admin<?= h($tokenParam) ?>">
                     <input type="hidden" name="unapprove_id" value="<?= (int)$row['id'] ?>">
                     <button class="btn btn-unapprove" type="submit">Freigabe zurückziehen</button>
                 </form>
-                <form method="POST" action="/admin.php<?= h($tokenParam) ?>"
+                <form method="POST" action="/admin<?= h($tokenParam) ?>"
                       onsubmit="return confirm('Eintrag wirklich löschen?')">
                     <input type="hidden" name="delete_id" value="<?= (int)$row['id'] ?>">
                     <button class="btn btn-delete" type="submit">Löschen</button>

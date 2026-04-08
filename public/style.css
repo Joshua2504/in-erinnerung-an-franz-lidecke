@@ -946,3 +946,33 @@ main.main-wide {
     flex-shrink: 0;
 }
 
+/* ── Language switcher ────────────────────────────────────────────────────── */
+.lang-switcher {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    margin-left: auto;
+}
+
+.lang-switcher a {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    text-decoration: none;
+    padding: 4px 7px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.lang-switcher a.active {
+    color: var(--color-accent);
+    border-color: var(--color-border);
+    font-weight: 600;
+}
+
+.lang-switcher a:hover {
+    color: var(--color-accent);
+    border-color: var(--color-border);
+}
+

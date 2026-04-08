@@ -1,9 +1,10 @@
+<?php require_once __DIR__ . '/lang.php'; ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $LANG ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Impressum – In Erinnerung an Franz Lidecke</title>
+    <title><?= htmlspecialchars(t('meta_title_impressum'), ENT_QUOTES, 'UTF-8') ?></title>
     <link rel="stylesheet" href="style.css">
     <meta name="robots" content="noindex, nofollow">
 </head>
@@ -13,7 +14,7 @@
     <a href="/" class="header-home-link">
         <div class="header-inner">
             <div class="header-text">
-                <p class="in-erinnerung">In liebevoller Erinnerung</p>
+                <p class="in-erinnerung"><?= t('header_in_loving_memory') ?></p>
                 <h1 class="name">Franz Lidecke</h1>
                 <p class="dates"><span class="date-symbol">*</span> 14. November 1937 &nbsp;&nbsp; <span class="date-symbol">&#8224;</span> 3. April 2026</p>
             </div>
@@ -23,58 +24,49 @@
         </div>
     </a>
     <nav class="site-nav">
-        <a href="/" class="site-nav-link">Kondolenzbuch</a>
-        <a href="/maerchenstunde.php" class="site-nav-link">Märchenstunde</a>
-        <a href="/maerchen-und-tanz.php" class="site-nav-link">Märchen &amp; Tanz</a>
+        <a href="/" class="site-nav-link"><?= t('nav_guestbook') ?></a>
+        <a href="/maerchenstunde" class="site-nav-link"><?= t('nav_story_hour') ?></a>
+        <a href="/maerchen-und-tanz" class="site-nav-link"><?= t('nav_tales_dance') ?></a>
+        <?= lang_switcher() ?>
     </nav>
 </header>
 
 <main>
     <section>
-        <h2>Impressum</h2>
+        <h2><?= htmlspecialchars(t('impressum_heading'), ENT_QUOTES, 'UTF-8') ?></h2>
         <p>
             Joshua Tobias Treudler<br>
             Hinter der Schönen Aussicht 10<br>
             DE &ndash; 60311 Frankfurt am Main
         </p>
         <p style="margin-top: 24px;">
-            <a href="/" style="color: var(--color-accent);">&larr; Zurück zur Gedenkseite</a>
+            <a href="/" style="color: var(--color-accent);"><?= t('impressum_back_link') ?></a>
         </p>
     </section>
 
     <section>
-        <h2>Datenschutzerklärung</h2>
-        <h3>Verantwortlicher</h3>
+        <h2><?= htmlspecialchars(t('privacy_heading'), ENT_QUOTES, 'UTF-8') ?></h2>
+        <h3><?= htmlspecialchars(t('privacy_controller_heading'), ENT_QUOTES, 'UTF-8') ?></h3>
         <p>
             Joshua Tobias Treudler<br>
             Hinter der Schönen Aussicht 10<br>
             DE &ndash; 60311 Frankfurt am Main
         </p>
-        <h3>Erhebung und Speicherung personenbezogener Daten</h3>
-        <p>
-            Diese Website erhebt beim Besuch automatisch technische Zugriffsdaten (IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Seite, Browsertyp). Diese Daten werden ausschließlich zur Sicherstellung des Betriebs der Website verwendet und nicht an Dritte weitergegeben.
-        </p>
-        <h3>Gästebuch</h3>
-        <p>
-            Beiträge im Gästebuch werden auf meinem Server gespeichert. Bitte tragen Sie dort keine personenbezogenen Daten ein, die Sie nicht veröffentlicht sehen möchten. Ein eingetragener Name erscheint öffentlich auf der Gedenkseite.
-        </p>
-        <h3>Keine Weitergabe an Dritte</h3>
-        <p>
-            Es werden keine personenbezogenen Daten an Dritte weitergegeben, verkauft oder zu Werbezwecken genutzt.
-        </p>
-        <h3>Google Analytics</h3>
-        <p>
-            Diese Website verwendet Google Analytics, einen Webanalysedienst der Google LLC. Google Analytics erfasst Nutzungsdaten (u.&thinsp;a. IP-Adresse, aufgerufene Seiten, Verweildauer) und übermittelt diese an Server von Google in den USA. Die IP-Adresse wird dabei anonymisiert. Rechtsgrundlage ist Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;f DSGVO (berechtigtes Interesse an der Websiteanalyse). Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color: var(--color-accent);">Google Datenschutzerklärung</a>.
-        </p>
-        <h3>Ihre Rechte</h3>
-        <p>
-            Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer gespeicherten Daten. Wenden Sie sich dazu an die oben genannte Adresse.
-        </p>
+        <h3><?= htmlspecialchars(t('privacy_data_collection_heading'), ENT_QUOTES, 'UTF-8') ?></h3>
+        <p><?= htmlspecialchars(t('privacy_data_collection_text'), ENT_QUOTES, 'UTF-8') ?></p>
+        <h3><?= htmlspecialchars(t('privacy_guestbook_heading'), ENT_QUOTES, 'UTF-8') ?></h3>
+        <p><?= htmlspecialchars(t('privacy_guestbook_text'), ENT_QUOTES, 'UTF-8') ?></p>
+        <h3><?= htmlspecialchars(t('privacy_no_sharing_heading'), ENT_QUOTES, 'UTF-8') ?></h3>
+        <p><?= htmlspecialchars(t('privacy_no_sharing_text'), ENT_QUOTES, 'UTF-8') ?></p>
+        <h3><?= t('privacy_ga_heading') ?></h3>
+        <p><?= t('privacy_ga_text') ?></p>
+        <h3><?= htmlspecialchars(t('privacy_rights_heading'), ENT_QUOTES, 'UTF-8') ?></h3>
+        <p><?= htmlspecialchars(t('privacy_rights_text'), ENT_QUOTES, 'UTF-8') ?></p>
     </section>
 </main>
 
 <footer>
-    <p><a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p><a href="/impressum"><?= htmlspecialchars(t('footer_legal'), ENT_QUOTES, 'UTF-8') ?></a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 </body>

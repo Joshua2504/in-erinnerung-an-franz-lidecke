@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/lang.php';
+
 $videos = [
     ['title' => 'Liebe in Märchen',                'file' => 'Lideckes Märchenstunde - Liebe in Märchen.mkv'],
     ['title' => 'Märchen der Brüder Grimm',         'file' => 'Lideckes Märchenstunde - Märchen der Brüder Grimm.mkv'],
@@ -26,23 +28,23 @@ function h(string $s): string {
 }
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?= $LANG ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lideckes Märchenstunde – In Erinnerung an Franz Lidecke</title>
-    <meta name="description" content="Videoaufnahmen von Franz Lideckes Märchenstunden – Märchen aus aller Welt, erzählt von Franz Lidecke, Märchenerzähler aus Bremerhaven.">
+    <title><?= h(t('meta_title_video')) ?></title>
+    <meta name="description" content="<?= h(t('meta_desc_video')) ?>">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://franz-lidecke.de/maerchenstunde.php">
+    <link rel="canonical" href="https://franz-lidecke.de/maerchenstunde">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="In Erinnerung an Franz Lidecke">
-    <meta property="og:url" content="https://franz-lidecke.de/maerchenstunde.php">
-    <meta property="og:title" content="Lideckes Märchenstunde – In Erinnerung an Franz Lidecke">
-    <meta property="og:description" content="Videoaufnahmen von Franz Lideckes Märchenstunden – Märchen aus aller Welt, erzählt von Franz Lidecke.">
+    <meta property="og:site_name" content="<?= h(t('og_site_name')) ?>">
+    <meta property="og:url" content="https://franz-lidecke.de/maerchenstunde">
+    <meta property="og:title" content="<?= h(t('meta_title_video')) ?>">
+    <meta property="og:description" content="<?= h(t('meta_desc_video')) ?>">
     <meta property="og:image" content="https://franz-lidecke.de/images/franz-lidecke-traueranzeige.jpeg">
-    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale" content="<?= $ogLocale ?>">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
     <style>
@@ -62,10 +64,10 @@ function h(string $s): string {
     <a href="/" class="header-home-link">
         <div class="header-inner">
             <div class="header-text">
-                <p class="in-erinnerung">In liebevoller Erinnerung</p>
+                <p class="in-erinnerung"><?= t('header_in_loving_memory') ?></p>
                 <h1 class="name">Franz Lidecke</h1>
                 <p class="dates"><span class="date-symbol">*</span> 14. November 1937 &nbsp;&nbsp; <span class="date-symbol">&#8224;</span> 3. April 2026</p>
-                <p class="subtitle">Märchenerzähler &middot; Lehrer &middot; Buchautor</p>
+                <p class="subtitle"><?= t('header_subtitle') ?></p>
             </div>
             <div class="header-photo">
                 <img src="/images/franz-lidecke-ausgeschnitten-removebg.png" alt="Franz Lidecke">
@@ -73,9 +75,10 @@ function h(string $s): string {
         </div>
     </a>
     <nav class="site-nav">
-        <a href="/" class="site-nav-link">Kondolenzbuch</a>
-        <a href="/maerchenstunde.php" class="site-nav-link active">Märchenstunde</a>
-        <a href="/maerchen-und-tanz.php" class="site-nav-link">Märchen &amp; Tanz</a>
+        <a href="/" class="site-nav-link"><?= t('nav_guestbook') ?></a>
+        <a href="/maerchenstunde" class="site-nav-link active"><?= t('nav_story_hour') ?></a>
+        <a href="/maerchen-und-tanz" class="site-nav-link"><?= t('nav_tales_dance') ?></a>
+        <?= lang_switcher() ?>
     </nav>
 </header>
 
@@ -83,30 +86,40 @@ function h(string $s): string {
 
     <section class="video-section">
 
-        <p class="video-back-link"><a href="/">&larr; Zurück zur Gedenkseite</a></p>
-        <h2>Lideckes Märchenstunde</h2>
-        <p class="video-intro">Franz Lidecke erzählte Märchen aus aller Welt – für Menschen von 4 bis 90 Jahren. Diese Aufnahmen bewahren seine Stimme und sein Können als Märchenerzähler.</p>
+        <p class="video-back-link"><a href="/"><?= t('video_back_link') ?></a></p>
+        <h2><?= h(t('video_heading')) ?></h2>
+        <p class="video-intro"><?= h(t('video_intro')) ?></p>
 
         <div class="plyr-container">
             <video id="player" playsinline controls>
                 <source src="<?= h($src) ?>" type="video/x-matroska">
-                Ihr Browser unterstützt keine Videowiedergabe.
+                <?= h(t('video_no_support')) ?>
             </video>
         </div>
         <p class="video-title"><?= h($current['title']) ?></p>
-        <p class="video-meta">Folge <?= $active + 1 ?> von <?= $count ?><?php if ($hasNext): ?> &nbsp;&middot;&nbsp; Weiter: <?= h($videos[$next]['title']) ?><?php endif; ?></p>
-        <p class="video-compat-note">Die Videos liegen im MKV-Format vor und werden zuverlässig in Chrome und Edge abgespielt. Firefox und Safari unterstützen dieses Format in der Regel nicht.</p>
+        <p class="video-meta">
+            <?= sprintf('%s %d %s %d',
+                $LANG === 'en' ? 'Episode' : 'Folge',
+                $active + 1,
+                $LANG === 'en' ? 'of' : 'von',
+                $count
+            ) ?>
+            <?php if ($hasNext): ?>
+                &nbsp;&middot;&nbsp; <?= h(t('video_next')) ?> <?= h($videos[$next]['title']) ?>
+            <?php endif; ?>
+        </p>
+        <p class="video-compat-note"><?= h(t('video_compat_note')) ?></p>
 
         <aside class="video-sidebar">
-            <p class="playlist-heading">Alle Folgen</p>
+            <p class="playlist-heading"><?= h(t('video_playlist_heading')) ?></p>
             <ol class="playlist">
                     <?php foreach ($videos as $i => $video): ?>
                     <li class="playlist-item<?= $i === $active ? ' active' : '' ?>">
-                        <a href="/maerchenstunde.php?v=<?= $i ?>">
+                        <a href="/maerchenstunde?v=<?= $i ?>">
                             <span class="playlist-num"><?= $i + 1 ?></span>
                             <span class="playlist-label"><?= h($video['title']) ?></span>
                             <?php if ($i === $active): ?>
-                            <span class="playlist-playing" aria-label="wird abgespielt">&#9654;</span>
+                            <span class="playlist-playing" aria-label="<?= h(t('video_playing_aria')) ?>">&#9654;</span>
                             <?php endif; ?>
                         </a>
                     </li>
@@ -119,7 +132,7 @@ function h(string $s): string {
 </main>
 
 <footer>
-    <p><a href="/impressum.php">Impressum</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p><a href="/impressum"><?= h(t('footer_legal')) ?></a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.js"></script>
@@ -134,7 +147,7 @@ function h(string $s): string {
 
     <?php if ($hasNext): ?>
     player.on('ended', function () {
-        window.location.href = '/maerchenstunde.php?v=<?= $next ?>';
+        window.location.href = '/maerchenstunde?v=<?= $next ?>';
     });
     <?php endif; ?>
 })();
