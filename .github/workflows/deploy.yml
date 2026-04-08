@@ -33,6 +33,7 @@ jobs:
             --exclude '.gitignore' \
             --exclude '.dockerignore' \
             --exclude 'README.md' \
+            --exclude '.env*' \
             -e "ssh -i ~/.ssh/id_rsa" \
             ./ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.SSH_PATH }}/
 
