@@ -307,6 +307,12 @@ if ($entries) {
     </nav>
 </header>
 
+<div class="traueranzeige-wrap">
+    <img src="/images/inka-uta-jaschke-franz-lidecke-traueranzeige.png"
+         alt="Traueranzeige Franz Lidecke"
+         class="traueranzeige-img">
+</div>
+
 <main>
 
     <section class="obituary">
