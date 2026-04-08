@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/lang.php'; ?>
+<?php require_once __DIR__ . '/lang.php'; require_once __DIR__ . '/stats.php'; ?>
 <!DOCTYPE html>
 <html lang="<?= $LANG ?>">
 <head>
@@ -64,8 +64,10 @@
     </section>
 </main>
 
+<?php $footerStats = get_footer_stats(); ?>
 <footer>
     <p><a href="/impressum"><?= htmlspecialchars(t('footer_legal'), ENT_QUOTES, 'UTF-8') ?></a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p style="margin-top:6px;font-size:0.78rem;"><?= number_format($footerStats['hits'], 0, ',', '.') ?> <?= htmlspecialchars(t('footer_hits'), ENT_QUOTES, 'UTF-8') ?> &nbsp;&middot;&nbsp; <?= number_format($footerStats['unique'], 0, ',', '.') ?> <?= htmlspecialchars(t('footer_unique'), ENT_QUOTES, 'UTF-8') ?></p>
 </footer>
 
 </body>

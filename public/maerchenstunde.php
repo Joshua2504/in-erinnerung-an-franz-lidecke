@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/lang.php';
+require_once __DIR__ . '/stats.php';
 
 $videos = [
     ['title' => 'Liebe in Märchen',                'file' => 'Lideckes Märchenstunde - Liebe in Märchen.mkv'],
@@ -130,8 +131,10 @@ function h(string $s): string {
 
 </main>
 
+<?php $footerStats = get_footer_stats(); ?>
 <footer>
     <p><a href="/impressum"><?= h(t('footer_legal')) ?></a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p style="margin-top:6px;font-size:0.78rem;"><?= number_format($footerStats['hits'], 0, ',', '.') ?> <?= h(t('footer_hits')) ?> &nbsp;&middot;&nbsp; <?= number_format($footerStats['unique'], 0, ',', '.') ?> <?= h(t('footer_unique')) ?></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.js"></script>

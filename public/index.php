@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/lang.php';
+require_once __DIR__ . '/stats.php';
 
 // ── Database ───────────────────────────────────────────────────────────────
 $dbPath = '/var/www/data/guestbook.db';
@@ -28,17 +29,14 @@ $db->exec('CREATE TABLE IF NOT EXISTS entry_images (
 )');
 
 $db->exec('CREATE TABLE IF NOT EXISTS page_views (
-    id         INTEGER PRIMARY KEY AUTOINCREMENT,
-    visited_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    visitor_token TEXT,
+    visited_at    DATETIME DEFAULT CURRENT_TIMESTAMP
 )');
 
 // Migration for existing databases
 try { $db->exec('ALTER TABLE entries ADD COLUMN anonymous INTEGER DEFAULT 0'); } catch (PDOException $e) {}
-
-// ── Track page view ────────────────────────────────────────────────────────
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $db->exec('INSERT INTO page_views DEFAULT VALUES');
-}
+try { $db->exec('ALTER TABLE page_views ADD COLUMN visitor_token TEXT'); } catch (PDOException $e) {}
 
 // ── Visitor cookie ─────────────────────────────────────────────────────────
 if (empty($_COOKIE['visitor_token'])) {
@@ -52,6 +50,12 @@ if (empty($_COOKIE['visitor_token'])) {
     $_COOKIE['visitor_token'] = $token;
 }
 $visitorToken = $_COOKIE['visitor_token'];
+
+// ── Track page view ────────────────────────────────────────────────────────
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $stmt = $db->prepare('INSERT INTO page_views (visitor_token) VALUES (?)');
+    $stmt->execute([$visitorToken]);
+}
 
 
 // ── Helpers ────────────────────────────────────────────────────────────────
@@ -430,8 +434,10 @@ if ($entries) {
 
 </main>
 
+<?php $footerStats = get_footer_stats(); ?>
 <footer>
     <p><a href="/impressum"><?= h(t('footer_legal')) ?></a> &nbsp;&middot;&nbsp; <a href="https://github.com/Joshua2504/in-erinnerung-an-franz-lidecke/" target="_blank" rel="noopener">GitHub</a></p>
+    <p style="margin-top:6px;font-size:0.78rem;"><?= number_format($footerStats['hits'], 0, ',', '.') ?> <?= h(t('footer_hits')) ?> &nbsp;&middot;&nbsp; <?= number_format($footerStats['unique'], 0, ',', '.') ?> <?= h(t('footer_unique')) ?></p>
 </footer>
 
 <div id="cookieBanner" class="cookie-banner" hidden>

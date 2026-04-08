@@ -94,7 +94,9 @@ return [
     'cookie_decline' => 'Decline',
 
     // ── Footer ────────────────────────────────────────────────────────────────
-    'footer_legal' => 'Legal Notice',
+    'footer_legal'   => 'Legal Notice',
+    'footer_hits'    => 'page views',
+    'footer_unique'  => 'visitors',
 
     // ── Video page ────────────────────────────────────────────────────────────
     'video_back_link'        => '&larr; Back to Memorial',

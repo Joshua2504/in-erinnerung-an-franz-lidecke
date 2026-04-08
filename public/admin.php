@@ -64,9 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // ── Page view stats ────────────────────────────────────────────────────────
-$statsTotal  = (int) $db->query('SELECT COUNT(*) FROM page_views')->fetchColumn();
-$stats7days  = (int) $db->query('SELECT COUNT(*) FROM page_views WHERE visited_at > datetime("now", "-7 days")')->fetchColumn();
-$statsToday  = (int) $db->query('SELECT COUNT(*) FROM page_views WHERE DATE(visited_at) = DATE("now")')->fetchColumn();
+$statsTotal   = (int) $db->query('SELECT COUNT(*) FROM page_views')->fetchColumn();
+$stats7days   = (int) $db->query('SELECT COUNT(*) FROM page_views WHERE visited_at > datetime("now", "-7 days")')->fetchColumn();
+$statsToday   = (int) $db->query('SELECT COUNT(*) FROM page_views WHERE DATE(visited_at) = DATE("now")')->fetchColumn();
+$uniqueTotal  = (int) $db->query('SELECT COUNT(DISTINCT visitor_token) FROM page_views WHERE visitor_token IS NOT NULL')->fetchColumn();
+$unique7days  = (int) $db->query('SELECT COUNT(DISTINCT visitor_token) FROM page_views WHERE visitor_token IS NOT NULL AND visited_at > datetime("now", "-7 days")')->fetchColumn();
+$uniqueToday  = (int) $db->query('SELECT COUNT(DISTINCT visitor_token) FROM page_views WHERE visitor_token IS NOT NULL AND DATE(visited_at) = DATE("now")')->fetchColumn();
+$entriesTotal = (int) $db->query('SELECT COUNT(*) FROM entries WHERE approved = 1')->fetchColumn();
 
 // ── Load entries ───────────────────────────────────────────────────────────
 $pending  = $db->query('SELECT * FROM entries WHERE approved = 0 ORDER BY created_at DESC')->fetchAll(PDO::FETCH_ASSOC);
@@ -157,10 +161,29 @@ $flashMsg = $_GET['msg'] ?? '';
 <div class="msg"><?= h($flashMsg) ?></div>
 <?php endif; ?>
 
-<table style="max-width:360px;margin-bottom:32px;">
-    <tr><th>Seitenaufrufe gesamt</th><td><?= number_format($statsTotal, 0, ',', '.') ?></td></tr>
-    <tr><th>Letzte 7 Tage</th><td><?= number_format($stats7days, 0, ',', '.') ?></td></tr>
-    <tr><th>Heute</th><td><?= number_format($statsToday, 0, ',', '.') ?></td></tr>
+<table style="max-width:520px;margin-bottom:32px;">
+    <thead>
+        <tr><th></th><th>Gesamt</th><th>7 Tage</th><th>Heute</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Seitenaufrufe</th>
+            <td><?= number_format($statsTotal,  0, ',', '.') ?></td>
+            <td><?= number_format($stats7days,  0, ',', '.') ?></td>
+            <td><?= number_format($statsToday,  0, ',', '.') ?></td>
+        </tr>
+        <tr>
+            <th>Unique Besucher</th>
+            <td><?= number_format($uniqueTotal, 0, ',', '.') ?></td>
+            <td><?= number_format($unique7days, 0, ',', '.') ?></td>
+            <td><?= number_format($uniqueToday, 0, ',', '.') ?></td>
+        </tr>
+        <tr>
+            <th>Einträge (freigegeben)</th>
+            <td><?= number_format($entriesTotal, 0, ',', '.') ?></td>
+            <td colspan="2" style="color:#aaa;">–</td>
+        </tr>
+    </tbody>
 </table>
 
 <h2>Wartend auf Freigabe (<?= count($pending) ?>)</h2>

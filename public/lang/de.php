@@ -95,7 +95,9 @@ return [
     'cookie_decline' => 'Ablehnen',
 
     // ── Footer ────────────────────────────────────────────────────────────────
-    'footer_legal' => 'Impressum',
+    'footer_legal'   => 'Impressum',
+    'footer_hits'    => 'Seitenaufrufe',
+    'footer_unique'  => 'Besucher',
 
     // ── Video page ────────────────────────────────────────────────────────────
     'video_back_link'       => '&larr; Zurück zur Gedenkseite',
