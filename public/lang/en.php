@@ -8,7 +8,7 @@ return [
     'meta_title_tales'     => 'Tales & Dance – In Memory of Franz Lidecke',
     'meta_desc_tales'      => 'Tales & Dance – a project by Franz Lidecke. Memorial page for Franz Lidecke, storyteller, teacher, and author from Bremerhaven.',
     'meta_title_impressum' => 'Legal Notice – In Memory of Franz Lidecke',
-    'og_site_name'         => 'In Memory of Franz Lidecke',
+    'og_site_name'         => 'Franz Lidecke',
 
     // ── Header ────────────────────────────────────────────────────────────────
     'header_in_loving_memory' => 'In Loving Memory',

@@ -8,7 +8,7 @@ return [
     'meta_title_tales'     => 'Märchen & Tanz – In Erinnerung an Franz Lidecke',
     'meta_desc_tales'      => 'Märchen & Tanz – ein Projekt von Franz Lidecke. Gedenkseite für Franz Lidecke, Märchenerzähler, Lehrer und Buchautor aus Bremerhaven.',
     'meta_title_impressum' => 'Impressum – In Erinnerung an Franz Lidecke',
-    'og_site_name'         => 'In Erinnerung an Franz Lidecke',
+    'og_site_name'         => 'Franz Lidecke',
 
     // ── Header ────────────────────────────────────────────────────────────────
     'header_in_loving_memory' => 'In liebevoller Erinnerung',

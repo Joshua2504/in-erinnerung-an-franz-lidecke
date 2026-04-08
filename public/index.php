@@ -269,6 +269,11 @@ if ($entries) {
     <meta property="og:image" content="https://franz-lidecke.de/images/franz-lidecke-traueranzeige.jpeg">
     <meta property="og:locale" content="<?= $ogLocale ?>">
 
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","name":"Franz Lidecke","url":"https://franz-lidecke.de/"}
+    </script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 </head>
