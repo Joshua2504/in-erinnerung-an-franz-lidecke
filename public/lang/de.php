@@ -56,7 +56,7 @@ return [
     'photo_alt'       => 'Foto von',
 
     // ── Banners ───────────────────────────────────────────────────────────────
-    'banner_success'       => 'Vielen Dank für Ihren Eintrag. Er wird nach Prüfung freigeschaltet.',
+    'banner_success'       => 'Vielen Dank für Ihren Eintrag.',
     'banner_error_heading' => 'Bitte korrigieren Sie folgende Fehler:',
 
     // ── Form ──────────────────────────────────────────────────────────────────

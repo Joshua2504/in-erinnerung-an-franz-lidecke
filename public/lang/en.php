@@ -55,7 +55,7 @@ return [
     'photo_alt'       => 'Photo by',
 
     // ── Banners ───────────────────────────────────────────────────────────────
-    'banner_success'       => 'Thank you for your entry. It will be published after review.',
+    'banner_success'       => 'Thank you for your entry.',
     'banner_error_heading' => 'Please correct the following errors:',
 
     // ── Form ──────────────────────────────────────────────────────────────────
