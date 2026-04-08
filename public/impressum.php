@@ -26,7 +26,6 @@
     <nav class="site-nav">
         <a href="/" class="site-nav-link"><?= t('nav_guestbook') ?></a>
         <a href="/maerchenstunde" class="site-nav-link"><?= t('nav_story_hour') ?></a>
-        <a href="/maerchen-und-tanz" class="site-nav-link"><?= t('nav_tales_dance') ?></a>
         <?= lang_switcher() ?>
     </nav>
 </header>

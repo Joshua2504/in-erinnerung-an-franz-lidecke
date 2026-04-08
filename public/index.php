@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $stmt = $db->prepare('INSERT INTO entries (name, email, message, cookie_token, approved, anonymous) VALUES (?, ?, ?, ?, 0, ?)');
+        $stmt = $db->prepare('INSERT INTO entries (name, email, message, cookie_token, approved, anonymous) VALUES (?, ?, ?, ?, 1, ?)');
         $stmt->execute([$name, $email ?: null, $message, $visitorToken, $anonymous]);
         $entryId = (int) $db->lastInsertId();
 
@@ -299,7 +299,6 @@ if ($entries) {
     <nav class="site-nav">
         <a href="/" class="site-nav-link active"><?= t('nav_guestbook') ?></a>
         <a href="/maerchenstunde" class="site-nav-link"><?= t('nav_story_hour') ?></a>
-        <a href="/maerchen-und-tanz" class="site-nav-link"><?= t('nav_tales_dance') ?></a>
         <?= lang_switcher() ?>
     </nav>
 </header>
