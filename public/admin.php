@@ -1,4 +1,8 @@
 <?php
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+
 $adminToken = getenv('ADMIN_TOKEN') ?: '';
 $givenToken = $_GET['token'] ?? '';
 

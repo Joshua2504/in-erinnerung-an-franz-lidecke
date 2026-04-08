@@ -1,4 +1,8 @@
 <?php
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+
 // ── Language switching ─────────────────────────────────────────────────────
 if (isset($_GET['lang']) && in_array($_GET['lang'], ['de', 'en'], true)) {
     setcookie('lang', $_GET['lang'], [
