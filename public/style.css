@@ -18,6 +18,12 @@
 
 html {
     font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: var(--color-accent);
+    color: #faf8f5;
 }
 
 body {
@@ -223,6 +229,15 @@ section h2 {
     margin: 0 0 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--color-border);
+}
+
+section h3 {
+    font-size: 0.78rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-muted);
+    margin: 28px 0 8px;
 }
 
 /* ── Entries ──────────────────────────────────────────── */
@@ -724,6 +739,60 @@ footer a:hover {
 
 /* ── Responsive ───────────────────────────────────────── */
 
+/* Video page: two-column layout (player + playlist side-by-side) */
+@media (min-width: 720px) {
+    .video-section {
+        display: grid;
+        grid-template-columns: 1fr 240px;
+        column-gap: 28px;
+        align-items: start;
+    }
+
+    .video-back-link,
+    .video-section > h2,
+    .video-intro {
+        grid-column: 1 / -1;
+    }
+
+    .plyr-container,
+    .video-title,
+    .video-meta,
+    .video-compat-note {
+        grid-column: 1;
+    }
+
+    .video-sidebar {
+        grid-column: 2;
+        grid-row: 4 / span 4;
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 860px) {
+    .video-section {
+        grid-template-columns: 1fr 280px;
+    }
+}
+
+/* Tablet: ease padding before full mobile collapse */
+@media (max-width: 680px) {
+    .site-header {
+        padding: 36px 28px 28px;
+    }
+
+    main {
+        padding: 32px 28px 40px;
+    }
+
+    footer {
+        padding: 16px 28px;
+    }
+
+    main.main-wide {
+        padding: 28px 20px 36px;
+    }
+}
+
 @media (max-width: 560px) {
     .site-header {
         padding: 32px 20px 28px;
@@ -815,8 +884,19 @@ main.main-iframe iframe {
 /* ── Video page ───────────────────────────────────────── */
 
 main.main-wide {
-    max-width: 1140px;
+    max-width: 960px;
     padding: 32px 36px 48px;
+}
+
+/* Override the tiny uppercase h2 style on the video page */
+.video-section > h2 {
+    font-size: 1.1rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--color-accent);
+    border-bottom: none;
+    margin-bottom: 6px;
+    padding-bottom: 0;
 }
 
 .video-back-link {
@@ -974,5 +1054,51 @@ main.main-wide {
 .lang-switcher a:hover {
     color: var(--color-accent);
     border-color: var(--color-border);
+}
+
+/* ── Print styles ─────────────────────────────────────── */
+
+@media print {
+    body {
+        background: #fff;
+        color: #000;
+        padding: 0;
+        font-size: 11pt;
+    }
+
+    .site-header {
+        border-top: 3px solid #000;
+        border-color: #000;
+        margin-top: 0;
+        max-width: 100%;
+    }
+
+    main {
+        max-width: 100%;
+        border: none;
+        padding: 20pt 0;
+    }
+
+    .site-nav,
+    .form-section,
+    .cookie-banner,
+    footer .github-link {
+        display: none !important;
+    }
+
+    footer {
+        max-width: 100%;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+
+    .header-photo img {
+        filter: grayscale(100%);
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 

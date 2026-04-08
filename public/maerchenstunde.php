@@ -82,7 +82,7 @@ function h(string $s): string {
     </nav>
 </header>
 
-<main>
+<main class="main-wide">
 
     <section class="video-section">
 
