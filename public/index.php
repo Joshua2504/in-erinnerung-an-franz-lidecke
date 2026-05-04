@@ -326,6 +326,16 @@ if ($entries) {
         </p>
     </section>
 
+    <section class="further-reading">
+        <h2><?= h(t('further_heading')) ?></h2>
+        <ul>
+            <li><a href="https://www.nordsee-zeitung.de/Nachrichten/Leben-fuers-Turnen-Franz-Lidecke-ist-seit-60-Jahren-Trainer-105378.html" target="_blank" rel="noopener"><?= h(t('further_link_nz_turnen')) ?></a></li>
+            <li><a href="https://www.nordsee-zeitung.de/bremerhaven/was-uns-maerchen-heutzutage-noch-geben-koennen-272717.html" target="_blank" rel="noopener"><?= h(t('further_link_nz_maerch')) ?></a></li>
+            <li><a href="https://www.weser-kurier.de/region/osterholzer-kreisblatt_artikel,-Offene-Buehne-fuer-den-Zauber-des-Lesens-_arid,659275.html" target="_blank" rel="noopener"><?= h(t('further_link_wk_opa')) ?></a></li>
+            <li><a href="https://buchshop.bod.de/sport-nicht-nur-fuer-jungen-in-der-halle-franz-lidecke-9783868122961" target="_blank" rel="noopener"><?= h(t('further_link_book_sport')) ?></a></li>
+        </ul>
+    </section>
+
     <?php if ($flashSuccess): ?>
     <div class="banner banner-success">
         <?= h(t('banner_success')) ?>

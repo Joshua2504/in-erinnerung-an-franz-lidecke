@@ -31,10 +31,11 @@ return [
             anschließend seinen Dienst im Bremerhavener Schuldienst an, wo er bis zu seiner
             Pensionierung im Jahr 2000 Grund-, Haupt- und Realschüler sowie Gymnasiasten in
             Deutsch, Englisch, Erdkunde, Geschichte, Sport und Musik unterrichtete.',
-    'obituary_para_3' => 'Seit 1952 war Franz als Übungsleiter in Turnvereinen tätig und leitete Gruppen
-            im Jungen-, Mädchen- und Erwachsenenturnen. Zwölf Jahre lang führte er während
-            der Schulferien Radwandergruppen des Jugendherbergsverbandes mit Jugendlichen aus
-            ganz Deutschland durch Norddeutschland. 1962 und 1964 half er je acht Wochen als
+    'obituary_para_3' => 'Seit 1952 war Franz als Übungsleiter in Bremerhavener Turnvereinen tätig — über
+            sechs Jahrzehnte beim GTV Bremerhaven und bei der SFL Bremerhaven — und leitete
+            Gruppen im Jungen-, Mädchen- und Erwachsenenturnen. Zwölf Jahre lang führte er
+            während der Schulferien Radwandergruppen des Jugendherbergsverbandes mit Jugendlichen
+            aus ganz Deutschland durch Norddeutschland. 1962 und 1964 half er je acht Wochen als
             Helfer in einem internationalen Ferienlager in den USA (Camp Timanous, Maine).
             Auf Grundlage seiner langjährigen Praxis verfasste er 2005 drei Lehrbücher für
             Sportlehrer in Schule und Verein.',
@@ -43,11 +44,24 @@ return [
             in der Europäischen Märchengesellschaft. Seitdem erzählte er Märchen aus aller Welt
             für Menschen von 4 bis 90 Jahren — in Deutschland und auf Studienreisen rund um den
             Globus. 2009 veröffentlichte er vier Märchen-CDs für Kinder ab 5, ab 7 und ab 9
-            Jahren sowie für Erwachsene.',
+            Jahren sowie für Erwachsene. Sein Repertoire wuchs auf über 200 Märchen, Anekdoten
+            und Sagen aus aller Welt; er trat zwischen Flensburg und Bayern auf und stand
+            mehrere Jahre lang regelmäßig vor der Kamera des Regionalfernsehens für Bremerhaven
+            und Bremen. Aus seiner Erzählpraxis entstanden zwei weitere Bücher: „Märchen hören
+            und spielen", in dem Kinder und Senioren die Geschichten pantomimisch begleiten, und
+            das autobiografische „… und warum bist du nicht mein Opa? – Ein kleiner Junge sucht
+            sich einen Großvater".',
     'obituary_para_5' => 'Am 3. April 2026 ist Franz Lidecke im Alter von 88 Jahren verstorben. Wir vermissen
             ihn sehr. Auf dieser Seite können Familie, Freunde und alle, die Franz Lidecke kannten,
             Abschiedsworte und Erinnerungen hinterlassen.',
     'obituary_video_link' => 'Lideckes Märchenstunde ansehen &rarr;',
+
+    // ── Further reading ───────────────────────────────────────────────────────
+    'further_heading'        => 'Weiterführende Links',
+    'further_link_nz_turnen' => 'Nordsee-Zeitung: „Leben fürs Turnen – Franz Lidecke ist seit 60 Jahren Trainer"',
+    'further_link_nz_maerch' => 'Nordsee-Zeitung: „Was uns Märchen heutzutage noch geben können"',
+    'further_link_wk_opa'    => 'Weser-Kurier: Lesung aus „… und warum bist du nicht mein Opa?"',
+    'further_link_book_sport'=> 'Mauer Verlag: „Sport nicht nur für Jungen in der Halle" (2013)',
 
     // ── Entries ───────────────────────────────────────────────────────────────
     'entries_heading' => 'Kondolenzbuch',

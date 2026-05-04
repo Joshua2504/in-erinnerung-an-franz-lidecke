@@ -884,6 +884,45 @@ main.main-iframe iframe {
     border: none;
 }
 
+/* ── Further reading (index.php) ──────────────────────── */
+
+.further-reading {
+    margin-top: 32px;
+    padding-top: 24px;
+}
+
+.further-reading ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.further-reading li {
+    margin: 0 0 10px;
+    padding-left: 1em;
+    position: relative;
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+.further-reading li::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    color: var(--color-rule);
+}
+
+.further-reading a {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+    transition: border-color 0.15s;
+}
+
+.further-reading a:hover {
+    border-bottom-color: var(--color-accent);
+}
+
 /* ── Märchenstunde callout (index.php) ────────────────── */
 
 .marchen-video-callout {

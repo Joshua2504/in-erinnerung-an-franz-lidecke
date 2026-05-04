@@ -31,8 +31,9 @@ return [
             entered service in Bremerhaven\'s school system, where until his retirement in 2000 he
             taught primary, secondary, and grammar school pupils in German, English, geography,
             history, physical education, and music.',
-    'obituary_para_3' => 'From 1952 onwards Franz was active as a gymnastics instructor in sports clubs,
-            leading groups in boys\', girls\', and adult gymnastics. For twelve years during school
+    'obituary_para_3' => 'From 1952 onwards Franz was active as a gymnastics instructor in Bremerhaven sports
+            clubs — for more than six decades at GTV Bremerhaven and SFL Bremerhaven — leading
+            groups in boys\', girls\', and adult gymnastics. For twelve years during school
             holidays he led cycling tours through northern Germany for the German Youth Hostel
             Association, with young people from all over the country. In 1962 and 1964 he each
             spent eight weeks as a helper at an international summer camp in the USA (Camp Timanous,
@@ -42,11 +43,25 @@ return [
             to many countries around the globe. In 1996 he began training as a storyteller with the
             European Fairy Tale Society. From then on he told fairy tales from around the world to
             audiences aged 4 to 90 — in Germany and on study tours across the globe. In 2009 he
-            released four fairy tale CDs for children from age 5, 7, and 9, as well as for adults.',
+            released four fairy tale CDs for children from age 5, 7, and 9, as well as for adults.
+            His repertoire grew to more than 200 fairy tales, anecdotes, and folk legends from
+            around the world; he performed across Germany from Flensburg to Bavaria, and for
+            several years appeared regularly on regional television for Bremerhaven and Bremen.
+            His storytelling practice gave rise to two further books: "Märchen hören und spielen",
+            in which children and seniors accompany the tales with pantomime, and the autobiographical
+            "… und warum bist du nicht mein Opa? – Ein kleiner Junge sucht sich einen Großvater"
+            ("And Why Aren\'t You My Grandfather? – A Small Boy Looks for a Grandfather").',
     'obituary_para_5' => 'On 3 April 2026 Franz Lidecke passed away at the age of 88. We miss him dearly.
             On this page, family, friends, and all who knew Franz Lidecke are welcome to leave
             farewell words and memories.',
     'obituary_video_link' => 'Watch Lidecke\'s Story Hour &rarr;',
+
+    // ── Further reading ───────────────────────────────────────────────────────
+    'further_heading'         => 'Further Reading',
+    'further_link_nz_turnen'  => 'Nordsee-Zeitung: "A life in gymnastics – Franz Lidecke, 60 years a trainer" (in German)',
+    'further_link_nz_maerch'  => 'Nordsee-Zeitung: "What fairy tales can still give us today" (in German)',
+    'further_link_wk_opa'     => 'Weser-Kurier: Reading from "… und warum bist du nicht mein Opa?" (in German)',
+    'further_link_book_sport' => 'Mauer Verlag: "Sport nicht nur für Jungen in der Halle" (2013, in German)',
 
     // ── Entries ───────────────────────────────────────────────────────────────
     'entries_heading' => 'Guestbook',
