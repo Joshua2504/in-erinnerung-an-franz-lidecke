@@ -1,0 +1,55 @@
+body {
+ color: #000000;
+ Background-color: #FAD99C;
+ margin-top: 100;
+ margin-left: 0px;
+ font-family: Verdana, Helvetica, Arial;
+ font-size: 9pt;
+ background-image: url('../bilder/trans.JPG');
+ background-repeat: repeat-y;
+ scrollbar-base-color:#FAD99C;scrollbar-track-color:#FAD99C;scrollbar-arrow-color:#802600; scrollbar-highlight-color:#802600;scrollbar-darkshadow-color:#FAD99C;scrollbar-shadow-color:#802600;
+ }
+
+ .box {
+ padding: 0px;
+ width: 570;
+ color: #802600;
+ overflow: auto;
+  }
+h1 {
+ font-size: 12pt;
+ color: #802600;
+}
+h2 {
+ font-size: 11pt;
+}
+h3 {
+ font-size: 10pt;
+}
+a:link {
+ color: #802600;
+ font-family: Verdana, Helvetica, Arial;
+ font-size: 10pt;
+ font-weight: bold;
+ text-decoration: none;
+}
+a:visited {
+ color: #802600;
+ font-family: Verdana, Helvetica, Arial;
+ font-weight: bold;
+ font-size: 10pt;
+ text-decoration: none;
+}
+a:hover {
+ color: #802600;
+ font-family: Verdana, Helvetica, Arial;
+ font-weight: bold;
+ font-size: 10pt;
+ text-decoration: underline;
+}
+td      {
+ color: #802600;
+ font-family: Verdana, Helvetica, Arial;
+ font-size: 9pt;
+ align: center;
+ }
