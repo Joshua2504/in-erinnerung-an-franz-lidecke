@@ -1,6 +1,6 @@
 {
     "require": {
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^7.1"
     },
     "config": {
         "vendor-dir": "vendor"
