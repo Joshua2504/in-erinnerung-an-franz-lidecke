@@ -33,6 +33,8 @@ $db->exec('CREATE TABLE IF NOT EXISTS page_views (
     visitor_token TEXT,
     visited_at    DATETIME DEFAULT CURRENT_TIMESTAMP
 )');
+$db->exec('CREATE INDEX IF NOT EXISTS idx_pv_visited ON page_views(visited_at)');
+$db->exec('CREATE INDEX IF NOT EXISTS idx_pv_token ON page_views(visitor_token)');
 
 // Migration for existing databases
 try { $db->exec('ALTER TABLE entries ADD COLUMN anonymous INTEGER DEFAULT 0'); } catch (PDOException $e) {}
@@ -52,7 +54,10 @@ if (empty($_COOKIE['visitor_token'])) {
 $visitorToken = $_COOKIE['visitor_token'];
 
 // ── Track page view ────────────────────────────────────────────────────────
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+// Skip obvious crawlers so the table isn't inflated by bot traffic.
+$ua    = $_SERVER['HTTP_USER_AGENT'] ?? '';
+$isBot = $ua === '' || preg_match('/bot|crawl|spider|slurp|preview|fetch|monitor/i', $ua);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !$isBot) {
     $stmt = $db->prepare('INSERT INTO page_views (visitor_token) VALUES (?)');
     $stmt->execute([$visitorToken]);
 }
@@ -184,6 +189,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $tmpPath = $files['tmp_name'][$i];
                 $info    = @getimagesize($tmpPath);
                 if (!$info || !in_array($info[2], $allowedTypes, true)) continue;
+                // Reject decompression bombs before GD decodes them into memory.
+                if ((int) $info[0] * (int) $info[1] > 40_000_000) continue; // ~40 MP cap
 
                 $ext       = $extMap[$info[2]];
                 $filename  = bin2hex(random_bytes(8)) . '.' . $ext;

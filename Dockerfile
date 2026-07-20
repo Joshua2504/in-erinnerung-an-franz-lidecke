@@ -12,7 +12,7 @@ WORKDIR /app
 COPY composer.json ./
 RUN composer install --no-dev --optimize-autoloader
 
-RUN a2enmod rewrite
+RUN a2enmod rewrite headers
 
 RUN mkdir -p /var/www/html/uploads && chown www-data:www-data /var/www/html/uploads
 
