@@ -44,7 +44,7 @@
 </header>
 
 <main class="main-iframe">
-    <iframe src="/maerchen-und-tanz/" title="<?= htmlspecialchars(t('tales_iframe_title'), ENT_QUOTES, 'UTF-8') ?>" allowfullscreen></iframe>
+    <iframe src="/maerchen-und-tanz-archiv/" title="<?= htmlspecialchars(t('tales_iframe_title'), ENT_QUOTES, 'UTF-8') ?>" allowfullscreen></iframe>
 </main>
 
 <footer>
