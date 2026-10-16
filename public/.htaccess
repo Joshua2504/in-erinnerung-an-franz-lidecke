@@ -8,6 +8,13 @@ RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+([^.]+)\.php[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
 
+# Old site moved: redirect old subpage links into the archive folder
+RewriteRule ^maerchen-und-tanz/(.+)$ /maerchen-und-tanz-archiv/$1 [R=301,L]
+
+# Remove trailing slash from non-directory URLs (prevents rewrite loop below)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
 # Internally serve extensionless URLs from .php files
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
